@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nitj.utkansh.utkansh_app"
+    >
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Permission: Allow application to write to SDCard -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="com.nitj.utkansh.utkansh_app.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="com.nitj.utkansh.utkansh2016.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name="com.nitj.utkansh.utkansh_app.app.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Utkansh"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Home"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.MyProfile"
+            android:label="My Profile"
+            android:parentActivityName="com.nitj.utkansh.utkansh_app.Home"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nitj.utkansh.utkansh_app.Home" />
+        </activity>
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Bookmarks"
+            android:label="@string/title_activity_bookmarks"
+            android:parentActivityName="com.nitj.utkansh.utkansh_app.Home"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nitj.utkansh.utkansh_app.Home" />
+        </activity>
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Maps"
+            android:label="@string/title_activity_maps"
+            android:parentActivityName="com.nitj.utkansh.utkansh_app.Home"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nitj.utkansh.utkansh_app.Home" />
+        </activity>
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Notifications"
+            android:label="@string/title_activity_notifications"
+            android:parentActivityName="com.nitj.utkansh.utkansh_app.Home"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nitj.utkansh.utkansh_app.Home" />
+        </activity>
+        <!-- Google MAP API key -->
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDYfqyC0b-eYSdcJR5s1nchDncU0YWZM1A" />
+
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.GpsCheck"
+            android:label="@string/title_activity_gps_check"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.MapsTest"
+            android:label="@string/title_activity_maps_test"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.EventList"
+            android:label="List of Events"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Event"
+            android:label="Event Description"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Merchandise"
+            android:label="@string/title_activity_merchandise"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.MapsTestEvents"
+            android:label="@string/title_activity_maps_test_events"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.GpsCheckEvents"
+            android:label="@string/title_activity_gps_check_events"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.LoginReg"
+            android:label="@string/title_activity_login_reg"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.activity.LoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.activity.RegisterActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <receiver
+            android:name="com.nitj.utkansh.utkansh_app.activity.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.nitj.utkansh.utkansh2016" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.nitj.utkansh.utkansh_app.activity.GCMNotificationIntentService" />
+
+
+
+        <activity
+            android:name="com.nitj.utkansh.utkansh_app.Developers"
+            android:label="@string/title_activity_developers"
+            android:parentActivityName="com.nitj.utkansh.utkansh_app.Home"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

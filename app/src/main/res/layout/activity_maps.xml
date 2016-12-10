@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     tools:context="app.com.example.android.utkansh2016.Maps">
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+<LinearLayout
+    android:layout_marginRight="60dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/textViewMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap on the marker of the location and then click on the Navigation button at the bottom right corner to start navigation "/>
+</LinearLayout>
+</FrameLayout>

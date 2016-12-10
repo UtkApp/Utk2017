@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">Utkansh2017</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_home">Home</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string-array name="navigation_drawer_items_array">
+        <item>Profile</item>
+        <item>Bookmarks</item>
+        <item>Maps</item>
+        <item>Merchandise</item>
+        <item>Notifications</item>
+        <item>Logout</item>
+        <item>Developers</item>
+    </string-array>
+
+    <string-array name="boys_hostel">
+        <item>Select Boys Hostel</item>
+        <item>H1</item>
+        <item>H2</item>
+        <item>H3</item>
+        <item>H4</item>
+        <item>H5</item>
+        <item>H6</item>
+        <item>H7</item>
+        <item>H7E</item>
+        <item>MBH-A Block</item>
+        <item>MBH-B Block</item>
+        <item>MBH-F Block</item>
+    </string-array>
+    <string-array name="girls_hostel">
+        <item>Select Girls Hostel</item>
+        <item>GH1</item>
+        <item>GH2</item>
+        <item>MGH</item>
+
+    </string-array>
+    <string-array name="quantity">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="size">
+        <item>Select Size</item>
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+    </string-array>
+
+
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+    <string name="hint_name">Your Name</string>
+    <string name="hint_email">Your Email Id</string>
+    <string name="hint_phone">Your 10 Digit Phone Number</string>
+    <string name="hint_college">Your Collage Name</string>
+    <string name="hint_password">Password</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_my_profile">MyProfile</string>
+    <string name="title_activity_bookmarks">Bookmarks</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="title_activity_notifications">Notifications</string>
+    <string name="title_activity_logout">Logout</string>
+    <string name="title_activity_gps_check">GpsCheck</string>
+    <string name="title_activity_map_test">MapTest</string>
+    <string name="title_activity_maps_test">MapsTest</string>
+    <string name="title_activity_merchandise">Merchandise</string>
+    <string name="title_activity_order_tshirt">OrderTshirt</string>
+    <string name="title_activity_about_us">AboutUs</string>
+    <string name="title_activity_maps_test_events">MapsTestEvents</string>
+    <string name="title_activity_gps_check_events">GpsCheckEvents</string>
+    <string name="title_activity_login_reg">LoginReg</string>
+    <string name="title_activity_display_utk">DisplayUTK</string>
+    <string name="title_activity_developers">Developers</string>
+    <string name="title_activity_event_registeration">EventRegisteration</string>
+</resources>
