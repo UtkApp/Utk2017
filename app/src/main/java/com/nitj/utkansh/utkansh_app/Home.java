@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,9 +56,24 @@ public class Home extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         regId = prefs.getString(REG_ID, "");
         email=prefs.getString(EMAIL_ID, "");
+
+
+
+
+
         mNavigationDrawerItemTitles= getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View listHeaderView = inflater.inflate(R.layout.header_list,null, false);
+
+        mDrawerList.addHeaderView(listHeaderView);
+
+
+
+
         mDrawerList.setDividerHeight(0);
         MyArrayAdapterDrawer a=new MyArrayAdapterDrawer(this, mNavigationDrawerItemTitles);
         mDrawerList.setAdapter(a);
