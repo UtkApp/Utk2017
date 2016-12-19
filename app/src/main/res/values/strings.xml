@@ -17,6 +17,7 @@
         <item>Notifications</item>
         <item>Logout</item>
         <item>Developers</item>
+        <item>Share</item>
     </string-array>
 
     <string-array name="boys_hostel">
