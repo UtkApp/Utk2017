@@ -16,6 +16,12 @@ import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -44,6 +50,9 @@ public class LoginActivity extends Activity {
     private SessionManager session;
     private SQLiteHelper db;
 
+    LoginButton loginButton;
+    CallbackManager callbackManager;
+
     RequestParams params = new RequestParams();
     Context applicationContext;
     GoogleCloudMessaging gcmObj;
@@ -58,7 +67,29 @@ public class LoginActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
+        loginButton = (LoginButton)findViewById(R.id.facebookLoginbtn);
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+
         inputEmail = (EditText) findViewById(R.id.email);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
@@ -67,6 +98,7 @@ public class LoginActivity extends Activity {
         db = new SQLiteHelper(getApplicationContext());
         dbNoti=new SQLiteHelper(getApplicationContext());
         applicationContext = getApplicationContext();
+
 
 
         session = new SessionManager(getApplicationContext());
@@ -106,7 +138,11 @@ public class LoginActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        callbackManager.onActivityResult(requestCode,resultCode,data);
+    }
 
     private void storeRegIdinSharedPref(Context context, String regId,
                                         String emailID) {

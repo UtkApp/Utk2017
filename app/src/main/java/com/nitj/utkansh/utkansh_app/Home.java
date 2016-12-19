@@ -250,7 +250,7 @@ public class Home extends AppCompatActivity {
 
 class MyAdapter extends FragmentStatePagerAdapter {
 
-    private String tabTitles[] = new String[]{"Pro Shows","About", "Clubs", "Sponsors", "Contact Us"};
+    private String tabTitles[] = new String[]{"Pro Shows","Clubs", "Sponsors", "Contact Us"};
 
     public MyAdapter(FragmentManager fm) {
         super(fm);
@@ -262,12 +262,10 @@ class MyAdapter extends FragmentStatePagerAdapter {
         if (position == 0) {
             fragment = new Starnite();
         } else if (position == 1) {
-            fragment = new About();
-        } else if (position == 2) {
             fragment = new Clubs();
-        } else if (position == 3) {
+        } else if (position == 2) {
             fragment = new Sponsors();
-        } else if (position == 4) {
+        } else if (position == 3) {
             fragment = new Contact();
         }
 

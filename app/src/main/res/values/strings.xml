@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Utkansh2017</string>
+    <string name="facebook_app_id">262959917452763</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
