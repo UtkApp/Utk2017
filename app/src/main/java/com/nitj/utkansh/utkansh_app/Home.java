@@ -333,7 +333,7 @@ public class Home extends AppCompatActivity {
 
 class MyAdapter extends FragmentStatePagerAdapter {
 
-    private String tabTitles[] = new String[]{"Pro Shows", "About", "Clubs", "Sponsors", "Contact Us"};
+    private String tabTitles[] = new String[]{"Pro Shows","About", "Clubs", "Sponsors", "Contact Us","Camera"};
 
     public MyAdapter(FragmentManager fm) {
         super(fm);
@@ -350,16 +350,19 @@ class MyAdapter extends FragmentStatePagerAdapter {
             fragment = new Clubs();
         } else if (position == 3) {
             fragment = new Sponsors();
-        } else if (position == 4) {
+        }
+        else if (position == 4) {
             fragment = new Contact();
         }
-
+        else if (position == 5) {
+            fragment = new Camera();
+        }
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 
     @Override
