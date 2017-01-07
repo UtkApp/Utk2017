@@ -45,6 +45,10 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.nitj.utkansh.utkansh_app.WebViewActivity"
+            android:label="Web View"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.nitj.utkansh.utkansh_app.MyProfile"
             android:label="My Profile"
             android:parentActivityName="com.nitj.utkansh.utkansh_app.Home"
