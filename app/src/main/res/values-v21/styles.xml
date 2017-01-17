@@ -6,6 +6,19 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/accent_material_light</item>
+        <item name="android:statusBarColor">@color/accent_material_light</item>
+        <item name="android:navigationBarColor">@color/accent_material_light</item>
+    </style>
+
+    <style name="edit_text" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/accent_material_light</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/accent_material_light</item>
+        <item name="android:statusBarColor">@color/accent_material_light</item>
+    </style>
 </resources>
 
 

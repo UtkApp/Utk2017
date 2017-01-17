@@ -15,9 +15,9 @@
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:src="@drawable/amulya"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            android:onClick="onCall0" />
         <ImageView
             android:layout_margin="10dp"
             android:layout_width="wrap_content"

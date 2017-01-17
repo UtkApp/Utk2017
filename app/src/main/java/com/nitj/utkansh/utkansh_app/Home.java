@@ -1,4 +1,5 @@
 package com.nitj.utkansh.utkansh_app;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -45,14 +48,14 @@ import org.jsoup.nodes.Document;
 import java.util.concurrent.ExecutionException;
 
 public class Home extends AppCompatActivity {
-    public static  final String LOG_TAG=Home.class.getSimpleName();
-    ViewPager viewPager=null;
+    public static final String LOG_TAG = Home.class.getSimpleName();
+    ViewPager viewPager = null;
 
     private SessionManager session;
     private SQLiteHelper db;
     private MySQLiteHelper helperEvent;
     private SQLiteDatabase database;
-    private String email,regId;
+    private String email, regId;
 
 
     private String[] mNavigationDrawerItemTitles;
@@ -109,7 +112,7 @@ public class Home extends AppCompatActivity {
         final TabLayout tabLayout;
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setBackgroundColor(Color.parseColor("#424242"));
+        tabLayout.setBackgroundColor(Color.parseColor("#FF630016"));
         tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#ef6c00"));
         tabLayout.setupWithViewPager(viewPager);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -120,12 +123,28 @@ public class Home extends AppCompatActivity {
         Checkversion();
     }
 
-
+    public void onCall0(View view) {
+        String phoneCallUri = "tel:918591871094";
+        Intent phoneCallIntent = new Intent(Intent.ACTION_CALL);
+        phoneCallIntent.setData(Uri.parse(phoneCallUri));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startActivity(phoneCallIntent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();
         getMenuInflater().inflate(R.menu.menu_home, menu);
-        MenuItem menuItem=menu.findItem(R.id.action_share);
+
+        /*MenuItem menuItem=menu.findItem(R.id.action_search);
         ShareActionProvider mShareActionProvider=new ShareActionProvider(this);
         if(mShareActionProvider!=null)
         {
@@ -135,7 +154,9 @@ public class Home extends AppCompatActivity {
         else
         {
         }
+*/
         return true;
+
     }
     private Intent createShareForecastIntent()
     {
@@ -182,6 +203,14 @@ public class Home extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+            ActivityOptionsCompat activityOptionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
+            Intent intent = new Intent(this,SearchActivity.class);
+            this.startActivity(intent,activityOptionsCompat.toBundle());
+            return true;
+
+        }
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -405,7 +434,7 @@ public class Home extends AppCompatActivity {
 
 class MyAdapter extends FragmentStatePagerAdapter {
 
-    private String tabTitles[] = new String[]{"Pro Shows","About", "Clubs", "Sponsors", "Contact Us","Camera"};
+    private String tabTitles[] = new String[]{"Pro Shows", "Clubs", "Sponsors", "Contact Us","Camera"};
 
     public MyAdapter(FragmentManager fm) {
         super(fm);
@@ -417,16 +446,14 @@ class MyAdapter extends FragmentStatePagerAdapter {
         if (position == 0) {
             fragment = new Starnite();
         } else if (position == 1) {
-            fragment = new About();
+            fragment = new ClubsNew();
         } else if (position == 2) {
-            fragment = new Clubs();
-        } else if (position == 3) {
             fragment = new Sponsors();
         }
-        else if (position == 4) {
+        else if (position == 3) {
             fragment = new Contact();
         }
-        else if (position == 5) {
+        else if (position == 4) {
             fragment = new Camera();
         }
         return fragment;
@@ -434,7 +461,7 @@ class MyAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 6;
+        return 5;
     }
 
     @Override

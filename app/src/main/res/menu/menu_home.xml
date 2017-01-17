@@ -1,17 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:compat="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="app.com.example.android.utkansh2016.Events">
-
-
+    >
 
 
     <item
-        android:id="@+id/action_share"
+        android:id="@+id/action_search"
         android:orderInCategory="4"
+        android:title="Search"
+        android:actionViewClass="android.support.v7.widget.SearchView"
         compat:showAsAction="always"
-        android:title="Share"
-        android:icon="@drawable/share_icon"
-        compat:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+        android:icon="@drawable/action_search"
+        />
 
 </menu>

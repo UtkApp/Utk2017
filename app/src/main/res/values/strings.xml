@@ -20,6 +20,20 @@
         <item>Share</item>
     </string-array>
 
+    <string-array name="clubs">
+        <item>Attractions</item>
+        <item>Fine Arts Club</item>
+        <item>Dance Club</item>
+        <item>Dramatics Club</item>
+        <item>Music Club</item>
+        <item>Movie Club</item>
+        <item>Photography Club</item>
+        <item>Literary and Debating Club</item>
+        <item>Rajbhasa Samiti</item>
+        <item>Yoga Club</item>
+        <item>Others</item>
+    </string-array>
+
     <string-array name="boys_hostel">
         <item>Select Boys Hostel</item>
         <item>H1</item>
@@ -96,4 +110,5 @@
     <string name="title_activity_display_utk">DisplayUTK</string>
     <string name="title_activity_developers">Developers</string>
     <string name="title_activity_event_registeration">EventRegisteration</string>
+    <string name="title_activity_search_activity">Search</string>
 </resources>

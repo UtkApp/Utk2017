@@ -2,13 +2,17 @@ package com.nitj.utkansh.utkansh_app;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -53,9 +57,31 @@ public class Event extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        setContentView(R.layout.activity_event_new);
+        //android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        //actionBar.hide();
+      //   Toolbar toolbar = (Toolbar) findViewById(R.id.MyToolbar);
+//        setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+       // nameE=(TextView)findViewById(R.id.nameEvent);
+        //nameE.setText(name);
+
+
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
+
+          collapsingToolbarLayout.setTitle(name);
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
+
+        Context context = this;
+        collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(context,R.color.orange));
+
+
+
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         editteam =(EditText)findViewById(R.id.team);
@@ -77,10 +103,7 @@ public class Event extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        nameE=(TextView)findViewById(R.id.nameEvent);
-        nameE.setText(name);
+
 
         register = (Button)findViewById(R.id.registerEventButton);
 

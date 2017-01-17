@@ -15,7 +15,7 @@
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="#ef6c00"
+            app:tabIndicatorColor="@color/accent_material_light"
             app:tabMode="scrollable" />
 
         <android.support.v4.view.ViewPager
@@ -36,7 +36,6 @@
         android:choiceMode="singleChoice"
         android:divider="#aaa"
         android:dividerHeight="1dp"
-
         />
 
 </android.support.v4.widget.DrawerLayout>

@@ -18,6 +18,7 @@ public class Contact extends Fragment {
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_contact, container, false);
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
