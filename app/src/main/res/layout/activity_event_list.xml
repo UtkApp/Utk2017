@@ -1,33 +1,43 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:elevation="1dp"
+    android:theme="@style/MyEventTheme">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.design.widget.CoordinatorLayout
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#FF4D0011"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <ImageView
                 android:id="@+id/el_img"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
+                android:layout_height="300dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/attractions"/>
-        </android.support.design.widget.CoordinatorLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="512dp"
-        android:background="#ffffff"
-        android:fillViewport="true" >
+        android:layout_height="match_parent"
+        android:layout_gravity="fill_vertical"
+        android:background="@drawable/bgb"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             >
         </ListView>
 

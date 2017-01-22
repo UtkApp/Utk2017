@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class EventList extends AppCompatActivity {
 
         Intent intent = getIntent();
         String society = intent.getStringExtra("society");
+
         Vector<String> names = new Vector<String>();
         MySQLiteHelper helper = new MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
@@ -34,6 +36,8 @@ public class EventList extends AppCompatActivity {
             event = cursor.getString(1);
             names.addElement(event);
         }
+        ImageView imageView =(ImageView)findViewById(R.id.el_img);
+        imageView.setImageResource(getImgID(society));
         String[] events = names.toArray(new String[names.size()]);
         MyArrayAdapterEventsList adapter = new MyArrayAdapterEventsList(this,events,society);
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem );
@@ -56,6 +60,18 @@ public class EventList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private int getImgID(String society) {
+        int[] image_id = {R.drawable.cover1,R.drawable.fine_arts_club,R.drawable.dance_club,R.drawable.dramatics_club,
+                R.drawable.music_club,R.drawable.movie_club,R.drawable.photography_club,R.drawable.literary_and_debating_club,
+                R.drawable.rajbhasa_samiti,R.drawable.quest,R.drawable.others};
+       String clb[]= getResources().getStringArray(R.array.clubs);
+        for(int i=0;i<clb.length;i++){
+            if(clb[i].equals(society))
+                return image_id[i];
+        }
+        return R.drawable.cover1;
     }
 
 }

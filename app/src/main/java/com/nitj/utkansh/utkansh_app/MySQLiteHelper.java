@@ -36,7 +36,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         /***********FAC***********/
 
         society="Fine Arts Club";
-        int img=R.drawable.fine_arts_club,img1;
+        Integer img= R.drawable.fine_arts_club,img1;
 
         name="CHARCOAL ART";
         description="Charcoal art is a form of dry medium art. Charcoal provides a rough texture and thousands of different strokes to your drawing.";
@@ -49,7 +49,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="CANVAS PAINTING";
@@ -63,7 +63,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="MANDALA PAINTING";
@@ -79,7 +79,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="TU KHEECH MERI PHOTO";
@@ -95,7 +95,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="HAVAA HAVAII";
@@ -115,7 +115,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="ILLUSTRATION ART";
@@ -129,7 +129,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="CARVING CRAFT";
@@ -143,7 +143,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="SPRAY IT OUT";
@@ -160,7 +160,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="ANDE KA FANDA";
@@ -178,7 +178,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="DESIGN-O-COMIC ";
@@ -194,7 +194,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="WOOD ART";
@@ -210,7 +210,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 /*****************Movie Club****************/
@@ -231,7 +231,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -247,7 +247,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -263,7 +263,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -277,7 +277,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -297,7 +297,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Swaraag";
@@ -311,7 +311,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -334,7 +334,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -349,7 +349,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -364,7 +364,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -383,7 +383,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -398,7 +398,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -418,7 +418,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="GENERAL QUIZ";
@@ -432,7 +432,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="MELA QUIZ";
@@ -446,7 +446,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -468,7 +468,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -487,7 +487,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -504,7 +504,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -523,7 +523,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
         name="DANCING DUO";
@@ -539,7 +539,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -561,7 +561,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -577,7 +577,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="AD-DUM";
@@ -594,7 +594,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -613,7 +613,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","ECE Building");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -638,7 +638,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -653,7 +653,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -668,7 +668,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Special");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -684,7 +684,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Special");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -700,7 +700,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -719,7 +719,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -741,7 +741,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
@@ -757,7 +757,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
@@ -773,7 +773,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
@@ -789,7 +789,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
@@ -808,7 +808,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
@@ -824,7 +824,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
 
         l = db.insert("EventInfo", null,cv);
 
@@ -844,7 +844,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Roadies";
@@ -857,7 +857,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Beg Borrow Steal";
@@ -870,7 +870,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Street Soccer";
@@ -883,7 +883,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Main Ground");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -898,7 +898,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -917,7 +917,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -931,7 +931,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -946,7 +946,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -962,7 +962,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
-        //cv.put("img",img1);
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -977,7 +977,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Main Ground");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -992,7 +992,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -1007,7 +1007,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Main Ground");
-        //cv.put("img",img);
+        cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -1022,6 +1022,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
     }

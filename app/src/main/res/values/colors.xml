@@ -24,8 +24,9 @@
 
 
 
-    <color name="black">#000000</color>
+    <color name="black">#4d4d4d</color>
     <color name="bg_gradient_start">#EB5038</color>
     <color name="bg_gradient_end">#CA3822</color>
     <color name="bg_button_login">#A92815</color>
+    <color name="myblack">#4d4d4d</color>
 </resources>

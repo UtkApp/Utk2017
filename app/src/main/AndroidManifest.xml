@@ -106,7 +106,9 @@
         <activity
             android:name=".EventList"
             android:label="List of Events"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/MyEventTheme"
+            />
         <activity
             android:name=".Event"
             android:label="Event Description"

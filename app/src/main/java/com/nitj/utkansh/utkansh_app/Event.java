@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -72,11 +73,9 @@ public class Event extends AppCompatActivity {
 
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
-
           collapsingToolbarLayout.setTitle(name);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
-
         //Context context = this;
         collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#FF630016"));/*ContextCompat.getColor(context,R.color.orange)*/
 
@@ -150,17 +149,18 @@ public class Event extends AppCompatActivity {
                 rl = (RelativeLayout)findViewById(R.id.navi_layout);
                 rl.setVisibility(View.VISIBLE);
             }
-            img_id=cursor.getInt(6);
-            if(img_id!=0){
-                imageView=(ImageView)findViewById(R.id.collapse_toolbar_image);
-                imageView.setImageResource(img_id);
-            }
-            bookmark=cursor.getInt(7);
 
+            bookmark=cursor.getInt(6);
             if(bookmark==1)
                 cBox.setChecked(true);
             else
                 cBox.setChecked(false);
+
+            img_id=cursor.getInt(8);
+            if(img_id!=0){
+                imageView=(ImageView)findViewById(R.id.collapse_toolbar_image);
+                imageView.setImageResource(img_id);
+            }
         }
         else
         {
