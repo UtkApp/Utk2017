@@ -1,4 +1,5 @@
 package com.nitj.utkansh.utkansh_app;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,17 +13,16 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ShareActionProvider;
 import android.view.LayoutInflater;
 import android.util.Log;
 import android.view.Menu;
@@ -45,24 +45,21 @@ import org.jsoup.nodes.Document;
 import java.util.concurrent.ExecutionException;
 
 public class Home extends AppCompatActivity {
-    public static  final String LOG_TAG=Home.class.getSimpleName();
-    ViewPager viewPager=null;
-
+    public static final String LOG_TAG = Home.class.getSimpleName();
+    public static final String REG_ID = "regId";
+    public static final String EMAIL_ID = "eMailId";
+    ViewPager viewPager = null;
     private SessionManager session;
     private SQLiteHelper db;
     private MySQLiteHelper helperEvent;
     private SQLiteDatabase database;
-    private String email,regId;
-
-
+    private String email, regId;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    public static final String REG_ID = "regId";
-    public static final String EMAIL_ID = "eMailId";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -89,16 +86,15 @@ public class Home extends AppCompatActivity {
 
         mDrawerList.addHeaderView(listHeaderView);
 
-
         mDrawerList.setDividerHeight(0);
         MyArrayAdapterDrawer a = new MyArrayAdapterDrawer(this, mNavigationDrawerItemTitles);
         mDrawerList.setAdapter(a);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mTitle = mDrawerTitle = getTitle();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
         setupDrawer();
 
         if (!session.isLoggedIn()) {
@@ -109,23 +105,45 @@ public class Home extends AppCompatActivity {
         final TabLayout tabLayout;
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setBackgroundColor(Color.parseColor("#424242"));
+        tabLayout.setBackgroundColor(Color.parseColor("#FF4D0011"));
         tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#ef6c00"));
         tabLayout.setupWithViewPager(viewPager);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        //Check if app version is latest
-        Checkversion();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Checkversion();
+            }
+        };
+        Thread chkVerthread = new Thread(runnable);
+        //chkVerthread.start();
     }
 
-
+    public void onCall0(View view) {
+        String phoneCallUri = "tel:918591871094";
+        Intent phoneCallIntent = new Intent(Intent.ACTION_CALL);
+        phoneCallIntent.setData(Uri.parse(phoneCallUri));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startActivity(phoneCallIntent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();
         getMenuInflater().inflate(R.menu.menu_home, menu);
-        MenuItem menuItem=menu.findItem(R.id.action_share);
+
+        /*MenuItem menuItem=menu.findItem(R.id.action_search);
         ShareActionProvider mShareActionProvider=new ShareActionProvider(this);
         if(mShareActionProvider!=null)
         {
@@ -134,8 +152,9 @@ public class Home extends AppCompatActivity {
         }
         else
         {
-        }
+        }*/
         return true;
+
     }
     private Intent createShareForecastIntent()
     {
@@ -182,6 +201,16 @@ public class Home extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+/*
+            ActivityOptionsCompat activityOptionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
+*/
+            Intent intent = new Intent(this,SearchActivity.class);
+            this.startActivity(intent/*,activityOptionsCompat.toBundle()*/);
+            return true;
+
+        }
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -213,6 +242,7 @@ public class Home extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
+        //Check if app version is latest
     }
 
     @Override
@@ -223,13 +253,6 @@ public class Home extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
-    }
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
-        }
     }
 
     @Override
@@ -251,7 +274,6 @@ public class Home extends AppCompatActivity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
 
     private void selectItem(int position)
     {
@@ -320,7 +342,6 @@ public class Home extends AppCompatActivity {
         finish();
     }
 
-
     //For Making sure app is updated
     private String getCurrentVersion(){
         PackageManager pm = this.getPackageManager();
@@ -335,30 +356,6 @@ public class Home extends AppCompatActivity {
         String currentVersion = pInfo.versionName;
 
         return currentVersion;
-    }
-    private class GetLatestVersion extends AsyncTask<String, String, String> {
-        String latestVersion;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                //It retrieves the latest version by scraping the content of current version from play store at runtime
-                String urlOfAppFromPlayStore = "https://play.google.com/store/apps/details?id=com.nitj.utkansh.utkansh2016";
-                Document doc = Jsoup.connect(urlOfAppFromPlayStore).get();
-                latestVersion = doc.getElementsByAttributeValue("itemprop","softwareVersion").first().text();
-
-            }catch (Exception e){
-                e.printStackTrace();
-
-            }
-
-            return latestVersion;
-        }
     }
 
     private void Checkversion() {
@@ -400,12 +397,44 @@ public class Home extends AppCompatActivity {
 
     }
 
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+    private class GetLatestVersion extends AsyncTask<String, String, String> {
+        String latestVersion;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                //It retrieves the latest version by scraping the content of current version from play store at runtime
+                String urlOfAppFromPlayStore = "https://play.google.com/store/apps/details?id=com.nitj.utkansh.utkansh2016";
+                Document doc = Jsoup.connect(urlOfAppFromPlayStore).get();
+                latestVersion = doc.getElementsByAttributeValue("itemprop","softwareVersion").first().text();
+
+            }catch (Exception e){
+                e.printStackTrace();
+
+            }
+
+            return latestVersion;
+        }
+    }
+
 }
 
 
 class MyAdapter extends FragmentStatePagerAdapter {
 
-    private String tabTitles[] = new String[]{"Pro Shows","About", "Clubs", "Sponsors", "Contact Us","Camera"};
+    private String tabTitles[] = new String[]{ "Clubs", "Sponsors","Camera", "Contact Us"};
 
     public MyAdapter(FragmentManager fm) {
         super(fm);
@@ -415,26 +444,22 @@ class MyAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = null;
         if (position == 0) {
-            fragment = new Starnite();
+            fragment = new ClubsNew();
         } else if (position == 1) {
-            fragment = new About();
-        } else if (position == 2) {
-            fragment = new Clubs();
-        } else if (position == 3) {
             fragment = new Sponsors();
-        }
-        else if (position == 4) {
-            fragment = new Contact();
-        }
-        else if (position == 5) {
+        } else if (position == 2) {
             fragment = new Camera();
         }
+        else if (position == 3) {
+            fragment = new Contact();
+        }
+
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return 6;
+        return 4;
     }
 
     @Override

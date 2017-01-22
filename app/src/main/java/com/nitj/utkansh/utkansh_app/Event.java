@@ -6,8 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,25 +40,48 @@ public class Event extends AppCompatActivity {
     String message;
     boolean error;
     CheckBox cBox;
-    int bookmark;
+    int bookmark,img_id;
     EditText editteam;
-    private ProgressDialog pDialog;
+    ImageView imageView;
     TextView nameE,descriptionE,timeE,venueE;
     LinearLayout descriptionLayout,timeLayout,venueLayout,teamLayout;
     Button navigate,register;
     RelativeLayout rl ;
-    private SQLiteHelper helperUser;
     SQLiteDatabase databaseEvent;
     MySQLiteHelper helperEvent;
+    private ProgressDialog pDialog;
+    private SQLiteHelper helperUser;
     private String URL_REGISTER_EVENT = "http://www.utkansh.com/UtkanshAndroidApp/RegisterEvents/new_register_for_events.php";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
+        setContentView(R.layout.activity_event_new);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+      //   Toolbar toolbar = (Toolbar) findViewById(R.id.MyToolbar);
+//        setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+       // nameE=(TextView)findViewById(R.id.nameEvent);
+        //nameE.setText(name);
+
+
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
+
+          collapsingToolbarLayout.setTitle(name);
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
+
+        //Context context = this;
+        collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#FF630016"));/*ContextCompat.getColor(context,R.color.orange)*/
+
+
+
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         editteam =(EditText)findViewById(R.id.team);
@@ -77,10 +103,7 @@ public class Event extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        nameE=(TextView)findViewById(R.id.nameEvent);
-        nameE.setText(name);
+
 
         register = (Button)findViewById(R.id.registerEventButton);
 
@@ -127,8 +150,12 @@ public class Event extends AppCompatActivity {
                 rl = (RelativeLayout)findViewById(R.id.navi_layout);
                 rl.setVisibility(View.VISIBLE);
             }
-
-            bookmark=cursor.getInt(6);
+            img_id=cursor.getInt(6);
+            if(img_id!=0){
+                imageView=(ImageView)findViewById(R.id.collapse_toolbar_image);
+                imageView.setImageResource(img_id);
+            }
+            bookmark=cursor.getInt(7);
 
             if(bookmark==1)
                 cBox.setChecked(true);
@@ -174,6 +201,18 @@ public class Event extends AppCompatActivity {
         HashMap<String,String> values = helperUser.getUserDetails();
         String email = values.get("email");
         new HttpAsyncTask().execute(email, name,team);
+    }
+
+    private void showDialog()
+    {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
+
+    private void hideDialog()
+    {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
     }
 
     private class HttpAsyncTask extends AsyncTask< String, Void, Void> {
@@ -244,18 +283,6 @@ public class Event extends AppCompatActivity {
             }
 
         }
-    }
-
-    private void showDialog()
-    {
-        if (!pDialog.isShowing())
-            pDialog.show();
-    }
-
-    private void hideDialog()
-    {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
     }
 
 }

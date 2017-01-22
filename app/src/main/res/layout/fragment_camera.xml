@@ -1,38 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="bottom"
-              android:orientation="vertical">
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="?attr/actionBarSize"
+    >
     <ImageView
         android:id="@+id/camera_image"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-
-        android:src="@drawable/sponsors"/>
-
-    <Button
-        android:id="@+id/open_fb_page"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@android:color/holo_blue_dark"
-        android:text="@string/fb_link"
-        android:textColor="@color/white"/>
-
-    <ImageButton
+        android:layout_marginTop="35dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/sponsors" />
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/camera_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:src="@android:drawable/ic_menu_camera"/>
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@android:drawable/ic_menu_camera"
+        app:backgroundTint="#FF001B4D"
+        app:layout_anchor="@id/camera_image"
+        app:layout_anchorGravity="top|center"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/open_fb_page"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/white"
+        app:backgroundTint="#FF001B4D"
+        app:elevation="5dp"
+        app:srcCompat="@android:drawable/ic_menu_upload" />
 
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.NestedScrollView>

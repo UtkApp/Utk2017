@@ -36,24 +36,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends Activity {
+    public static final String REG_ID = "regId";
+    public static final String EMAIL_ID = "eMailId";
     private static final String TAG = RegisterActivity.class.getSimpleName();
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    RequestParams params = new RequestParams();
+    Context applicationContext;
+    GoogleCloudMessaging gcmObj;
+    AsyncTask<Void, Void, String> createRegIdTask;
+    String regId = "";
     private Button btnLogin;
     private Button btnLinkToRegister;
     private EditText inputEmail;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHelper db;
-
-    RequestParams params = new RequestParams();
-    Context applicationContext;
-    GoogleCloudMessaging gcmObj;
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    AsyncTask<Void, Void, String> createRegIdTask;
-    public static final String REG_ID = "regId";
-    public static final String EMAIL_ID = "eMailId";
-    String regId = "";
-
-
     private SQLiteHelper dbNoti;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +67,9 @@ public class LoginActivity extends Activity {
 
 
         session = new SessionManager(getApplicationContext());
+        session.setLogin(true);
         if (session.isLoggedIn()) {
+            /**/
             Intent intent = new Intent(LoginActivity.this, Home.class);
             startActivity(intent);
             finish();

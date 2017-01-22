@@ -31,29 +31,29 @@ public class MyArrayAdapterEventsList extends ArrayAdapter<String> {
 
         // Change icon based on name
         String s = society;
-
+        String[] clubs=getContext().getResources().getStringArray(R.array.clubs);
         //System.out.println(s);
-        if (s.equals("Attractions")) {
+        if (s.equals(clubs[0])) {
             imageView.setImageResource(R.drawable.star);
-        } else if (s.equals("Fine Arts Club")) {
+        } else if (s.equals(clubs[1])) {
             imageView.setImageResource(R.drawable.finearts);
-        } else if (s.equals("Dance Club")) {
+        } else if (s.equals(clubs[2])) {
             imageView.setImageResource(R.drawable.dance);
-        } else if (s.equals("Dramatics Club")) {
+        } else if (s.equals(clubs[3])) {
             imageView.setImageResource(R.drawable.drama);
-        } else if (s.equals("Music Club")) {
+        } else if (s.equals(clubs[4])) {
             imageView.setImageResource(R.drawable.music);
-        } else if (s.equals("Movie Club")) {
+        } else if (s.equals(clubs[5])) {
             imageView.setImageResource(R.drawable.video);
-        } else if (s.equals("Photography Club")) {
+        } else if (s.equals(clubs[6])) {
             imageView.setImageResource(R.drawable.photo);
-        } else if (s.equals("Literary and Debating Club")) {
+        } else if (s.equals(clubs[7])) {
             imageView.setImageResource(R.drawable.lads);
-        } else if (s.equals("Rajbhasa Samiti")) {
+        } else if (s.equals(clubs[8])) {
             imageView.setImageResource(R.drawable.rajbhasha);
-        } else if (s.equals("Yoga Club")) {
+        } else if (s.equals(clubs[9])) {
             imageView.setImageResource(R.drawable.yoga);
-        } else if (s.equals("Others")) {
+        } else if (s.equals(clubs[10])) {
             imageView.setImageResource(R.drawable.miscelle);
         }
         return rowView;

@@ -34,7 +34,7 @@ public class Bookmarks extends AppCompatActivity {
     private void showBookmarkedEvents()
     {
         Vector<String> bookmarks = new Vector<String>();
-        com.nitj.utkansh.utkansh_app.MySQLiteHelper helper = new com.nitj.utkansh.utkansh_app.MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
+        MySQLiteHelper helper = new MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from EventInfo where bookmark == 1", null);
         while (cursor.moveToNext()) {

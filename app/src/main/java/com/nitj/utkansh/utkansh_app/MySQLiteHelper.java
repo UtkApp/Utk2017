@@ -4,12 +4,15 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v4.content.ContextCompat;
 
 public class MySQLiteHelper extends SQLiteOpenHelper{
 
+    Context cntx;
     public MySQLiteHelper(Context context, String dbName, SQLiteDatabase.CursorFactory factory,	int version)
     {
         super(context, dbName, factory, version);
+        cntx=context;
     }
 
     @Override
@@ -30,14 +33,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         String name,society,description,time,venue = "";
         long l;
         ContentValues cv;
+        /***********FAC***********/
 
         society="Fine Arts Club";
+        int img=R.drawable.fine_arts_club,img1;
 
-
-        name="Mobile Cover Designing";
-        description="In this event, participants have to design their own mobile cover.";
-        time="10:00 am - 12:00 pm, Day 1";
-        venue="LTC";
+        name="CHARCOAL ART";
+        description="Charcoal art is a form of dry medium art. Charcoal provides a rough texture and thousands of different strokes to your drawing.";
+        time="Day 1,2 and 3";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -45,16 +49,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-
-
-        name="Dream Catcher";
-        description="As the name suggests 'Dream Catcher' catches bad dreams. Dream catchers are one of the most fascinating traditions of Native Americans. The traditional dream catcher was intended to protect the sleeping individual from negative dreams, while letting positive dreams through. The positive dreams would slip through the hole in the center of the dream catcher, and glide down the feathers to the sleeping person below. The negative dreams would get caught up in the web, and expire when the first rays of the sun struck them.\n" +
-                "How the Dream Catcher is made:\n" +
-                "Using a hoop of willow, and decorating it with findings, bits and pieces of everyday life, (feathers, arrow heads, beads, etc) the dream catcher is believed to have the power to catch all of a person's dreams, trapping the bad ones, and letting only the good dreams pass through the dream catcher.\n";
-        time="2:00 pm - 5:00 pm, Day 1";
-        venue="LTC";
+        name="CANVAS PAINTING";
+        description="Participants will be provided with 3 canvases . they have to paint these 3 canvases such that when put together ,they form a whole painting split in 3 parts.";
+        time="Day 1,2 and 3";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -62,27 +63,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-
-        name="Graffiti";
-        description="COME!..THINK!.CREATE\n" +
-                "One of the only event of its kind is back again! Yes! It's GRAFFITI time! It's time to splash your imagination and paint your own wall!!";
-        time="9:30 am - 12:30 pm, Day 2";
-        venue="OAT";
-        cv = new ContentValues();
-        cv.put("name" , name);
-        cv.put("society" , society);
-        cv.put("description" , description);
-        cv.put("time" , time);
-        cv.put("venue" , venue);
-        cv.put("location","OAT");
-        l = db.insert("EventInfo", null, cv);
-
-        name="Cartoon Sketching";
-        description="A fun event where you can relive the memories of your childhood by depicting your idea, your story, your fantasies or anything through a cartoon sketch.";
-        time="10:00 am - 12:00 pm, Day 2";
-        venue="LTC";
+        name="MANDALA PAINTING";
+        description="A mandala is a complex abstract design that is usually circular in form. Mandalas can contain both geometric and organic forms. They can also contain recognizable images that carry meaning for the person who is creating it.\n" +
+                "\n" +
+                "In essence, mandalas represent the connection between our inner worlds and outer reality. Designing your own mandalas can be both inspirational and therapeutic.\n";
+        time="n/a";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -90,16 +79,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-
-
-
-
-        name="Glass Painting";
-        description="Decorating glass pieces with glass paints and glitter.\n";
-        time="2:00 pm - 5:00 pm, Day 2";
-        venue="LTC";
+        name="TU KHEECH MERI PHOTO";
+        description="There will be 1 round in the event.\n" +
+                "\n" +
+                "You will be provided with sheets and the required material like pencils, eraser, scissors, etc to make a creative photo prop.\n";
+        time="N.A";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -107,15 +95,19 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-
-
-
-        name="Button Art";
-        description="Making creative patterns with buttons";
-        time="2:00 pm - 5:00 pm, Day 2";
-        venue="LTC";
+        name="HAVAA HAVAII";
+        description="It will be a single round event.\n" +
+                "\n" +
+                "The teams will be provided with Japanese fans.\n" +
+                "\n" +
+                "They will be provided with decorating materials like colours, laces etc.\n" +
+                "\n" +
+                "Within the given time they have to decorate the fans using their own creativity\n";
+        time="n/a";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -123,14 +115,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-
-
-        name="Pop-Up Card Making";
-        description="Pop-up greeting cards are a great twist on the ordinary greeting card. They are enormously fun (and easy!) to create, and the recipient of your card will be delighted. Now it's time to get creative and to make a pop up card of your own.";
-        time="9:30 am - 12:30 pm, Day 3";
-        venue="LTC";
+        name="ILLUSTRATION ART";
+        description="Visualize your imagination and ideas in form of expressive portrait or paintings to convey certain social issue or certain information.";
+        time="n/a";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -138,17 +129,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-
-
-
-
-
-        name="Canvas Painting";
-        description="In this event, participants have to paint a particular area of the college on the canvas.";
-        time="All 3 Days";
-        venue="LTC";
+        name="CARVING CRAFT";
+        description="Draw and carve your imagination on a piece of paper to make it more lively and expressive.";
+        time="n/a";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -156,13 +143,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
+        name="SPRAY IT OUT";
+        description="The Participants will be provided with a story related to the theme and they need to complete the story using the graffiti technique.\n" +
+                "\n" +
+                "Best Three will be awarded.\n" ;
 
-        name="3D Sketching";
-        description="Make 3D drawings that appear to jump right off the page through a combination of shading techniques borrowed from airbrushing, flawless perspective, and a few insider techniques (multiple sheets of paper to create more complex images).";
-        time="All 3 Days";
-        venue="LTC";
+        time="n/a";
+        venue="LTC or OAT";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -170,18 +160,69 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
+        name="ANDE KA FANDA";
+        description="The participants will be provided with the egg trays or egg shells as per their choice.\n" +
+                "\n" +
+                "The need to paint the given material and decorate it\n" +
+                "\n" +
+                "The best three will be awarded\n";
+        time="n/a";
+        venue="LTC or OAT";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","LTC");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
 
+        name="DESIGN-O-COMIC ";
+        description="There will be 1 round in the event\n" +
+                "\n" +
+                "You will be provided a sheet and the required material (pencil, eraser, colors) to depict a comic story. You can create your own story or use any existing comic story.\n";
+        time="Day 1,2 and 3";
+        venue="n/a";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","LTC");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
 
+        name="WOOD ART";
+        description="There will be 1 round in the event\n" +
+                "\n" +
+                "You will be provided a wooden sheet and metallic colors and you will have to paint it and show your innovation.\n";
+        time="n/a";
+        venue="LTC or OAT";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","LTC");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
+
+/*****************Movie Club****************/
 
         society="Movie Club";
-
+        img=R.drawable.movie_club;
 
 
         name="Cineaste";
-        description="Cineaste is a short film-making competition, the ultimate platform that each artist deserves. Amaze your viewers with your perspective, aesthetic sense, emotion or simple ingenuity of idea. So ignite the director, cinematographer, the sound specialist, the editor or simply an art connoisseur inside you waiting to leap out.";
-        time="9:00 am - 11:30 am, Day 1";
+        description="Let your imagination and creativity fly and achieve new heights with this movie-making event. Here is the great opportunity to get rewarded for your passion of movie. \n" +
+                "  There are several round of movie quiz during the event, audience are also invited and can win goodies in quiz round.\n";
+        time="Day 1";
         venue="CSH";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -190,12 +231,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
 
-        name="Mad Ads";
-        description="Advertisement making competition for a given theme. MAD Ads is an event for all those who have the ability to cast a spell on viewers. If you have the power of presentation, then welcome to MAD ads, which challenges your imagination to think smart and think new.";
+        name="Mad-Ads";
+        description="";
         time="11:00 am - 1:30 pm, Day 2";
         venue="IT Park, Second Floor";
         cv = new ContentValues();
@@ -205,12 +247,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Distorcia";
-        description="Have you seen Spiderman in Bhojpuri?? Have you seen 'Gaana Wala Song' version of 'Ishq wala love' song from the movie Student of the year?? Are you creative enough to dub a movie clip in your own voice and own dialogues? What are you waiting for then?? Dub a movie clip in your own dialogues and own Voice with creative, innovative and funny ideas and participate the most creative event of Movie Club.";
-        time="2:30 pm - 4:00 pm, Day 2";
+        name="ROFL -Just for laugh ";
+        description= "Make a funny video by watching which viewers get Rolling on Floor\n" +
+                "Laughing. Include the dialogues in your video, make it funnier along with pooling in your idea in order to increase the odds of you winning the prize. i.e. 羨a gaye meri maut ka tamasha dekhne・ 腺abumoshai, zindagi badi honi chahiye, lambi nahin!・・tc.\n";
+        time="Day 2";
         venue="IT Park, Second Floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -219,12 +263,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Shoot at Sight";
-        description="Clip of the Fest! The UTKANSH'16 streets, dazzling in bright colors and shimmering lights, full of some of the wackiest characters and wildest personalities, is the perfect setting for a video too! All you need to do is pick your cameras and shoot the Best moments of 'Utkansh' and compile them in a single video.";
-        time="2:30 pm - 4:00 pm, Day 3";
+        name="Final-Cut";
+        description="How many times you have watched a song and felt like words don't match the video? We often plug our earphones and start thinking about al the funny choreographies and scenes that go in our mind. And If we have not seen the video before, the imagination become really brilliant. This year, Movie Club has brought an event for all the creative mind sout there, finalcut, where we are giving you a pool of songs to pick from and make a video on it. So, buckle up people, make your team, let your imagination fly and be a cinematographer of new era and grab large cash prizes.";        time="2:30 pm - 4:00 pm, Day 3";
         venue="IT Park, Second Floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -233,15 +277,32 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
+
+/********Music Club********/
 
         society="Music Club";
+        img = R.drawable.music_club;
 
+        name="MEGASONIC (Battle of Bands)";
+        description="Megasonic  is Band competition where Bands will compete with each other to be Best Band of Utkansh 2016 and win the ultimate prize.";
+        time="Day 1";
+        venue="OAT";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","CSH");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
 
-        name="Swarag";
-        description="The most popular of the musical competitions of UTKANSH, continues to elevate its level. Be it a sweet mesmerizing ghazal or a scintillating bright qawwali; be it folk or filmi; you can showcase your song on our platform. So, unleash the singer within you. Come and gauge your talent with some of the gifted children of mother India.";
-        time="12:00 pm - 2:00 pm, Day 3";
+        name="Swaraag";
+        description="Swaraag is a singing competition where contestants will be given a platform to showcase their singing skills to be Best Singer of Utkansh 2016.";
+        time="Day 3";
         venue="CSH";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -250,16 +311,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
+/*********************Photography Club**************/
+
         society="Photography Club";
+        img = R.drawable.photography_club;
 
 
         name="Photo-Manipulation";
-        description="Participants should make a creative poster, which must consist a camera, lens or anything related to photography. Creative posters will be appreciated.";
-        time="2:00 pm - 4:00 pm, Day 1";
-        venue="OAT";
+        description="1.\tThis is an online Event\n" +
+                "\n" +
+                "2.\tAfter registration, a photo which is to be manipulated will be sent via email 1 day before UTKANSH\n";
+        time="Day 1";
+        venue="Online";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -267,12 +334,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="Photo Treasure Hunt";
         description="Photo creativity with the help of props provided. Some photographs will be provided which will depict places inside campus, at that place props will be provided to participants. Using those props teams will have to create a scene according to props & take photographs.";
-        time="11:30 am - 1:30 pm, Day 2";
+        time="Day 2";
         venue="OAT";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -280,13 +348,33 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("description" , description);
         cv.put("time" , time);
         cv.put("venue" , venue);
-        cv.put("location","OAT");
+        cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="In Campus";
+        name="Photo Walk";
         description="Photograph of anything or anywhere inside campus (only) without any specified theme. Event will be organised online.";
         time=" Day 2";
+        venue="n/a";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
+
+
+        name="Dreamscapes";
+        description="1.\tThis is a theme based online event.\n" +
+                "\n" +
+                "2.\tPhotos must be in accordance with the theme only\n" +
+                "\n" +
+                "3.\tEach person can send two entries but each theme can have only one entry\n";
+        time="All 3 Days";
         venue="Online";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -295,25 +383,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
-        l = db.insert("EventInfo", null, cv);
-
-
-        name="Dreamscapes";
-        description="One theme (Black & White) is the only theme allowed. One entry per theme will be allowed from an individual. Event will be organised online.";
-        time="All 3 Days";
-        venue="N/A";
-        cv = new ContentValues();
-        cv.put("name" , name);
-        cv.put("society" , society);
-        cv.put("description" , description);
-        cv.put("time" , time);
-        cv.put("venue" , venue);
-        cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="Tasveer-Photo Exhibition";
-        description="Photo exhibition (proper photo frame display) will be there. Entries will be closed one day before Utkansh. No entries will be entertained after the deadline. Only one entry per participant is allowed.";
+        description="Photo exhibition (proper photo frame display) will be there. Only one entry per participant is allowed.";
         time="All 3 Days";
         venue="IT Park, Ground Floor";
         cv = new ContentValues();
@@ -323,34 +398,69 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
-        society="Yoga Club";
+/**********************Quest**************************/
 
+        society="Quest";
+        img = R.drawable.quest;
 
-        name=" Yoga Competition";
-        description="The art of Yoga helps in controlling an individual's mind, body, and soul. Tone muscle and cultivate self love with this YOGA flow! Participants would be given at least 2 asana to perform. Judgement will be done on the basis of perfection and the way the participants approaches various Asanas.";
-        time="9:30 am - 11:00 am, Day 1\n" + "9:00 am - 10:30 am, Day 2";
-        venue="OAT";
+        name="SPORTS QUIZ";
+        description="Sports quiz is a quiz about sports, games, players, athletes, awards etc. If you think you are good at all these things, this quiz is a heaven for you. So, use your knowledge and logics and win this quiz.";
+        time="n/a";
+        venue="n/a";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
         cv.put("description" , description);
         cv.put("time" , time);
         cv.put("venue" , venue);
-        cv.put("location","OAT");
+        cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
+        name="GENERAL QUIZ";
+        description="General quiz will have questions from history, geography, science, movies, sports etc. If you have a knack about general knowledge, then play this quiz and win cash prizes.";
+        time="n/a";
+        venue="n/a";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
+
+        name="MELA QUIZ";
+        description="This topic will have questions from Music, Entertainment, Literature and Arts. Use all your knowledge here and win this quiz.";
+        time="n/a";
+        venue="n/a";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
+
+
+/**************************Dance Club*************************/
 
         society="Dance Club";
+        img=R.drawable.dance_club;
 
 
-
-        name="Shut Up N Dance";
-        description="Cut the Crap...JUST Do IT...Dude!! Can't do it alone? Feeling too shy?? Then better catch a dance partner or form your own dance group.  A group dance competition in which the team comprises of 4 to 15 members who can perform complete western dance/Bollywood dance/Salsa/Tango/Cha-Cha but folk dance is not allowed.";
-        time="2:30 pm - 5:00 pm, Day 1";
+        name="GROUP DANCE";
+        description="If you can dance in storm, don't wait for rain to be over before it might be too late. We are seeking for connection that goes beyond words and intellectual." +
+                " You can do it now, if your dance crew have the zeal for it and you are good enough to rip off the stage, then SPARK your talent right now.";
         venue="CSH";
+        img1=R.drawable.dance_club2;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -358,15 +468,18 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Face Off(Solo)";
-        description="Dance, when you're broken open. Dance, if you've torn the bandage off. Dance in the middle of the fighting. Dance in your blood. Dance when you're perfectly free.\n" +
-                "Dance to express. This year, we present to you a unique pedestal to showcase your ingenuity and pit yourself against the titans of dance. There will be two rounds.\n" +
-                "The individual will be given 3-4 minutes to perform";
-        time="10:00 am - 1:00 pm, Day 2";
+        name="SOLO FACE-OFF";
+        description="Have you ever had the desire to express the hidden language of your soul," +
+                " make the music visible and simply be insane? We'll provide you the level field to be fearless and limitless." +
+                " Dance to the beat of your own drum; don't let anyone tell you it can't be done." +
+                " The solo-face off competition, it痴 about passion for your own style of dancing, showcasing your own crazy moves.   ";
+        time="Day 2";
         venue="CSH";
+        img1=R.drawable.dance_club1;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -374,13 +487,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Razzmatazz";
-        description="It is said that dancing is like dreaming with your feet. Dancing gives you those moments when you let yourself loose and let the passion from your soul away your body with the rhythm. Utkansh'16 brings together the best dancers under one roof!!Razzmatazz is a choreography competition in which the participant team has to depict a story or theme through synchronized choreography and music.";
-        time="1:00 pm - 4:00 pm, Day 2";
+        name="THEMATIC  DANCE COMPETITION";
+        description="Let your steps be the lyrics to the music.. Let your face express every emotion..let your soul dance to the music of life.\n" +
+                "With step up,you with your troop have the chance to be more than what you already are, be a revolution and put it all in one performance to be the best out of the lot!\n";
+        time="Day 2";
         venue="CSH";
+        img1=R.drawable.dance_club3;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -388,14 +504,18 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
 
-        name="Folk Nite";
-        description="Anything called Folk Art reflects domination! Get ready to witness a ride through all the emotions during Folk Dance at Utkansh'16. The folk dance competition comprises of performances on non-bollywood pure folk songs in a team of maximum 16 members.  Strictly no classical dance steps are allowed.  No fusion of two or more songs is allowed.";
-        time="2:00 pm - 5:00 pm, Day 3";
+        name="FOLK LORE";
+        description="One of the main events of Utkansh. Folk Night is the event which brings participation in the form of folk dances." +
+                " The folk of our regions bring us close to our roots," +
+                " and give us the feeling of belongingness and identity.";
+        time="Day 3";
         venue="CSH";
+        img1=R.drawable.folk_lore;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -403,15 +523,36 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
+        name="DANCING DUO";
+        description="Let yourself free and come up with your partner and arm yourself with all the moves you have." +
+                "  Prove it to the world that you are a real dancing doublet (irrespective of gender) and can rip off the stage in a way none else can.";
+        time="Day 2 or 3";
+        venue="CSH";
+        img1=R.drawable.dancing_duo;
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","CSH");
+        //cv.put("img",img1);
+        l = db.insert("EventInfo", null, cv);
+
+
+/**************************Dramatics Club*******************/
 
         society="Dramatics Club";
-
+        img = R.drawable.dramatics_club;
 
         name="Rangmanch(Stage Play)";
-        description="An actor's dream to bring the character that he has imagined to do is fulfilled by this form of art, we invite all theatre lovers to live the character they wished to through this medium. Time slot for the play: 25 minutes min and 45 minutes max (from entry to exit). The soft copy of script should be sent to the organizing team before 2nd March to bawretheatrenitj@gmail.com, on the basis of which organizers will select the teams for final event.";
-        time="11:30 am - 2:30 pm, Day 1";
+        description="A stage space has two rules: \n" +
+                "(1) Anything can happen and (2) Something must happen.\"\n" +
+                "- Peter Brook \n";
+        time="Day 1";
         venue="CSH";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -420,13 +561,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
 
         name="Mono-Act";
-        description="An actor's dream to bring the character that he has imagined to do is fulfilled by this form of art, we invite all theatre lovers to live the character they wished to through this medium. Time slot for the play: 25 minutes min and 45 minutes max (from entry to exit). The soft copy of script should be sent to the organizing team before 2nd March to bawretheatrenitj@gmail.com, on the basis of which organizers will select the teams for final event.";
-        time="4:00 pm - 5:30 pm, Day 1";
+        description="Make them laugh, make them cry, and back to laughter. What do people go to the theatre for?" ;
+        time="Day 1";
         venue="OAT";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -435,12 +577,34 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
+
+        name="AD-DUM";
+        description="A stage space has two rules: \n" +
+                "(1) Anything can happen and (2) Something must happen.\"\n" +
+                "- Peter Brook \n" +
+                "The stage awaits for the real life magicians, the followers of art to create magic. \n";
+        time="n/a";
+        venue="n/a";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","OAT");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="Halla Bol (Street Play)";
-        description="With this event we invite young enthusiastic theatre lovers of this DESI ENTERTAINMENT FORM to open up and express their ideas of liberalism and let their voices reach to the ears of system.  The team can have maximum 20 members and the duration of the performance should be minimum 25 minutes and maximum 35 minutes.  The soft copy of script for the Street Play should be sent to the organizers before March 3rd, 2016 to bawretheatrenitj@gmail.com. The final participants will be selected on the basis of the script.";
-        time="2:30 pm - 5:30 pm,Day 2";
+        description="If you were born with the ability to change someone痴 perspective or emotions, never waste that gift. It is one of the most powerful gifts God can give葉he ability to influence."
+                +"-Shannon L. Alder"+
+                "Come forward; let the streets be your stage and the common man -your audience."+
+                "Come forward; be the change";
+
+        time="Day 2";
         venue="In front of ECE building";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -449,20 +613,24 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","ECE Building");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
 
 
+/**********************Literary and Debating Club**************************/
+
 
         society="Literary and Debating Club";
+        img=R.drawable.literary_and_debating_club;
 
 
-        name="Aapka Neta Kaisa Ho?";
-        description="Do you want to be the rising leader of the country??\n" +
-                "Come! Be the part of the event this Utkansh to fulfill your dreams as LADS provides you the best platform to prove others that you can hold the audience with your words.  Participants will be shortlisted on the basis of a form filled by them containing a political situation. This form will be made available as and when you register for the event. In the next round, every participant will be given a topic on the spot on which he/she has to speak for 2-2.5 minutes. \n" ;
-        time="1:30 am - 4:30 pm, Day 1";
-        venue="IT Park Ground Floor";
+        name="TURN THE COAT";
+        description="A turncoat is a person who shifts allegiance from one loyalty or ideal to another, betraying or deserting an original cause by switching to the opposing side or party.\n" +
+                "So to win the event, u have to be the best turncoat!\n";
+        time="n/a";
+        venue="IT Park";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -470,28 +638,29 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Wee Weensy Tales";
-        description="There would have been several stories and books that would have flashed in front of you. Lads presents to you WEE WEENSY TALES to bring all sorts of fantastic writers to create a tweet sized tale that delivers your thought effectively to the audience.  A word will be given to all the participants on which each of them will have to submit a tale of 4 to 5 sentences in a maximum of 30 minutes" ;
-        time="2:00 pm - 4:00 pm, Day 1";
+        name="WE WEENSY TALES\n";
+        description="Fairy tales. Fiction and Non-Fiction. Fables. Adventure. Success. Funny. History. Mysteries. Science. Sports. Scary and all kinds of stories. We are sure there would have been several stories and books that would have flashed in front of you. LADC presents to you Wee Weensy tales to bring all sorts of fantastic writers to create a tweet sized tale that delivers your thought effectively to the audience.";
+        time="Day 1";
         venue="LTC";
         cv = new ContentValues();
         cv.put("name" , name);
-        cv.put("soci" +
-                "ety" , society);
+        cv.put("society" , society);
         cv.put("description" , description);
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","LTC");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="La Persona";
-        description="LAD club on this UTKANSH presents LA PERSONA that entitles the winners of the event as Mr. and Ms.Utkansh . The event will be conducted on all 3 days of the fest having one round each day. The rounds will be on the spot and will test the confidence, personality, team work and overall skills of the participants. Each round will be knockout. ";
-        time="Round 1: 10:00 am - 11:30 am , Day 1" + "\n" +  "Round 2: 10:00 am - 1:00 pm , Day 2\n" + "Round 3: 9:30 am - 12:00 pm , Day 3";
-        venue="Day 1 : IT Park \n" + "Day 2 : IT Park\n" + "Day 3 : CSH";
+        description="La persona, organized by literary and debating club, is the most interesting mega event of Utkansh. The event, which includes various rounds of meticulously designed activities to judge various aspects of the participants' personality viz confidence, team-spirit, conscientiousness and talent ensures an extremely wonderful experience. The winners will honoured with the titles of Mr and Miss Utkansh.";
+        time="Day 1" +  "Day 2"+ "Day 3";
+        venue="IT Park or CSH";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -499,16 +668,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Special");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="Youth Parliament";
-        description="In this one of a kind debating event, the speaker must consecutively propose and oppose the same motion to the best of his/her capabilities. This event challenges the mettle of a true debator, by testing his ability to defend a motion, and then, at the drop of a hat, bash it to death\n" +
-                "Round 1: Group Discussion (Elimination round) \n" +
-                "\n" +
-                "Round 2: Parliamentary Debate \n";
-        time="Round 1: 02:30 pm - 5:30 pm , Day 1\n" + "Round 2: 2:00 pm - 5:00 pm, Day 2 ";
-        venue="Day 1 : SC-06 1\n" + "Day 2 : LTC";
+        description="For good ideas and true innovation, you need human interaction, conflict, argument, debate.\"\n" +
+                "LADC presents it's mega event for Utkansh'17 where we celebrate our diversities, debate the differences, enlighten ourselves and provide solutions to the current problems that the world is facing in this British Parliamentary debate style event, YOUTH PARLIAMENT.\n";
+        time="Day 1 and Day 2 ";
+        venue="LTC";
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -516,12 +684,33 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Special");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="I am a Grammarian";
-        description="LAD club presents you an opportunity to structurally find an ability to express yourself and be more aware of how it works. There shall be preliminary and final rounds. The preliminary round will be written aptitude based on vacbulary and grammar. The final round is a three laps event comprising 5 teams with 4 members each.";
-        time="Round 1: 2:00 pm - 5:00 pm, Day 2\n" + "Round 2: 02:00 am - 5:00 pm, Day 3";
+        description="According to Urbandictionary.com, Grammar is something that's never used anymore, because people nowadays are stupid・ Do you think you have it in you to prove this newly generalized definition wrong? Do you think you are the next-gen Grammar Nazi?\n" +
+                "LADC presents I'm a Grammarian, an event that gives you an opportunity to show off your grammar skills.\n";
+        time="Day 1,2 and 3";
+        venue="IT Park or Ground Floor";
+        cv = new ContentValues();
+        cv.put("name" , name);
+        cv.put("society" , society);
+        cv.put("description" , description);
+        cv.put("time" , time);
+        cv.put("venue" , venue);
+        cv.put("location","IT Park");
+        //cv.put("img",img);
+        l = db.insert("EventInfo", null, cv);
+
+
+        name="POESIA";
+        description="Do you find yourself mesmerized by the works of Wordsworth, Shakespeare, Browning and the likes? Do rhyme schemes and couplets come as naturally to you as blinking? Are you always on the lookout for opportunities to showcase your poetic genius? Then here's your chance...\n" +
+                "LADC presents Poesia, an on-the-spot poem writing and recital competition.\n" +
+                "\n" +
+                "A picture will be shown to the participants upon which they will have to write a self-composed poem at-the-spot.\n";
+
+        time="Day 3";
         venue="IT Park, Ground Floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -530,31 +719,20 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Poetry";
-        description="This UTKANSH, let go of reality and escape to a surreal world. A picture will be shown to the participants upon which they will have to write a self-composed poem at-the-spot." +
-                "\n" ;
-        time="9:30 am - 12:00 pm, Day 3";
-        venue="IT Park, Ground Floor";
-        cv = new ContentValues();
-        cv.put("name" , name);
-        cv.put("society" , society);
-        cv.put("description" , description);
-        cv.put("time" , time);
-        cv.put("venue" , venue);
-        cv.put("location","IT Park");
-        l = db.insert("EventInfo", null, cv);
 
-
+/******************Rajbhasa Samiti**********************/
 
         society="Rajbhasa Samiti";
+        img=R.drawable.rajbhasa_samiti;
 
 
-        name="Filmy Sangram";
+        name="FILMY SANGRAM";
         description="Test your knowledge about Hindi movies in a team of 2-3. This competition will consist of four rounds. Questions would be related to dialogues and riddles of hindi movies.";
-        time="10:00 am - 12:00 pm, Day 1";
+        time="Day 1";
         venue="IT Park, First floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -563,13 +741,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Bharat Darshan";
+        name="FIR BHI DIL HAI HINDUSTAANI";
         description="This competition will consist of 3 rounds and you can participate in a team of 2";
-        time="2:00 pm - 5:00 pm, Day 1";
+        time="Day 1";
         venue="IT Park, First floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -578,13 +757,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Jasoosi nighahe";
+        name="JASOOSI NIGAHE";
         description="Do you think you have those detective like capabilities of James Bond or Sherlock Holmes? Then we have something for your group of 2-3 people. Exciting rounds awaiting";
-        time="10:00 am - 1:00 pm, Day 2";
+        time="Day 2";
         venue="IT Park, First floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -593,13 +773,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Kavya kala";
+        name="KAVYA RACHNA";
         description="It is a solo competition. First round consists of sel composed poem recitation. Second round will test your word formation skills. Third round to be revealed during contest.(Performances are allowed in Hindi only)";
-        time="2:00 pm - 5:00 pm, Day 2";
+        time="Day 2";
         venue="IT Park, First floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -608,6 +789,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
@@ -615,9 +797,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 
 
-        name="Pragyansh";
+        name="PRAGYANSH";
         description="An exciting mix of testing your mental abilities and hindi vocabulary. Group contest where in the first round you will form some English words from given letters and translate them to Hindi. Orther rounds to be revealed later.";
-        time="10:00 am - 1:00 pm, Day 3";
+        time="Day 3";
         venue="IT Park, First floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -626,13 +808,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
 
         l = db.insert("EventInfo", null, cv);
 
 
-        name="Vaad Vivad ";
+        name="VAAD VIVAAD";
         description="First round will consist of debate over a given subject. Second debate round will conduct a debate on an issue topic. In third round, each partipant would be required to speak for 1 minute on a given problem";
-        time="2:00 pm - 5:00 pm, Day 3";
+        time="Day 3";
         venue="IT Park, First floor";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -641,12 +824,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
+        //cv.put("img",img);
 
         l = db.insert("EventInfo", null,cv);
 
 
         society = "Others";
         description="";
+        img=R.drawable.attractions;
 
 
         name="Campus Connect";
@@ -659,10 +844,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Roadies";
-        time="12:30 pm - 4:00 pm, Day 1\n"+"11:00 am - 4:00 pm, Day 2";
+        time="Day 1 and Day 2";
         venue="In front of OAT";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -671,10 +857,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Beg Borrow Steal";
-        time="11:00 am - 1:00 pm, Day 1\n"+"11:00 am - 1:00 pm, Day 2";
+        time="Day 1 and Day 2";
         venue="In front of OAT";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -683,10 +870,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
         name="Street Soccer";
-        time="9:00 am - 5:00 pm, All 3 days";
+        time="All 3 days";
         venue="Near Main Ground";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -695,19 +883,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Main Ground");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-        name="Turban Tying";
-        time="11:00 am - 12:30 pm, Day 2";
-        venue="LTC";
-        cv = new ContentValues();
-        cv.put("name" , name);
-        cv.put("society" , society);
-        cv.put("description" , description);
-        cv.put("time" , time);
-        cv.put("venue" , venue);
-        cv.put("location","LTC");
-        l = db.insert("EventInfo", null, cv);
+
 
         name="All Day DJ";
         time="All Day";
@@ -719,19 +898,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","NIT Jalandhar");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
-        name="Prom Eve";
-        time="4:00 pm - 6:00 pm";
-        venue="Community Center";
-        cv = new ContentValues();
-        cv.put("name" , name);
-        cv.put("society" , society);
-        cv.put("description" , description);
-        cv.put("time" , time);
-        cv.put("venue" , venue);
-        cv.put("location","Community Center");
-        l = db.insert("EventInfo", null, cv);
 
 
         society="Attractions";
@@ -740,6 +909,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         name="Grand Opening Ceremony";
         time="6:00 pm - 9:00 pm, Day 0";
         venue="CSH";
+        img1=R.drawable.others ;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -747,11 +917,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
         name="Hasya Kavi Sammelan";
-        time="5:30 pm - 8:30 pm, Day 1";
+        time="Day 1";
         venue="CSH";
         cv = new ContentValues();
         cv.put("name" , name);
@@ -760,12 +931,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
         name="Mega Sonic - Battle Of Bands";
         time="7:30 pm - 11:00 pm, Day 1";
         venue="OAT";
+        img1=R.drawable.megasonic;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -773,6 +946,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","OAT");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -780,6 +954,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         name="Panache - Fashion Show";
         time="5:30 pm - 8:30 pm, Day 2";
         venue="CSH";
+        img1=R.drawable.panache ;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -787,6 +962,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","CSH");
+        //cv.put("img",img1);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -801,6 +977,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Main Ground");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -815,19 +992,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","IT Park");
-        l = db.insert("EventInfo", null, cv);
-
-
-        name="Gatka";
-        time="3:00 pm - 4:00 pm, Day 3";
-        venue="Outside CSH";
-        cv = new ContentValues();
-        cv.put("name" , name);
-        cv.put("society" , society);
-        cv.put("description" , description);
-        cv.put("time" , time);
-        cv.put("venue" , venue);
-        cv.put("location","CSH");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
 
 
@@ -842,14 +1007,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         cv.put("time" , time);
         cv.put("venue" , venue);
         cv.put("location","Main Ground");
+        //cv.put("img",img);
         l = db.insert("EventInfo", null, cv);
-
-
 
 
         name="Closing Ceremony";
         time="5:30 pm - 8:00 pm, Day 3";
         venue="CSH";
+        img1=R.drawable.others;
         cv = new ContentValues();
         cv.put("name" , name);
         cv.put("society" , society);
@@ -862,3 +1027,4 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
     }
 
 }
+

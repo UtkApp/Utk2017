@@ -95,7 +95,7 @@ public class MapsTestEvents extends FragmentActivity implements LocationListener
         Intent i=getIntent();
         String name=i.getExtras().getString("name");
 
-        com.nitj.utkansh.utkansh_app.MySQLiteHelper helper = new com.nitj.utkansh.utkansh_app.MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
+        MySQLiteHelper helper = new MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from EventInfo where name=='" + name + "'", null);
 

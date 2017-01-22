@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -43,111 +45,20 @@ import java.util.HashMap;
 
 import static com.google.android.gms.plus.PlusOneDummyView.TAG;
 
-
-/**
- * Created by rupeshwar on 24-11-2016.
- */
-
 public class Camera extends Fragment {
-
-    //ImageView test_view;
-    private ImageButton mPhotoButton;
-    private ImageView mPhotoView;
-    private File mPhotoFile;
-    private Button mFB_LinkButton;
-
-    private final String mFB_URL = "https://www.facebook.com/utkansh/";
 
     private static final int REQUEST_PHOTO = 0;
     private static final String LOG_TAG1 = "Dimensions";
-
+    private final String mFB_URL = "https://www.facebook.com/utkansh/";
+    //ImageView test_view;
+    private FloatingActionButton mPhotoButton;
+    private ImageView mPhotoView;
+    private File mPhotoFile;
+    private FloatingActionButton mFB_LinkButton;
     private ProgressDialog mProgressDialog;
 
     private SQLiteHelper db;
     private String utk;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        db = new SQLiteHelper(getActivity().getApplicationContext());
-        HashMap<String, String> values = db.getUserDetails();
-        utk = values.get("utk");
-        Log.d(LOG_TAG1, "utk" + utk);
-
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-
-        View v = inflater.inflate(R.layout.fragment_camera, container, false);
-
-        mFB_LinkButton = (Button) v.findViewById(R.id.open_fb_page);
-
-        mFB_LinkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(mFB_URL));
-                startActivity(i);
-
-            }
-        });
-
-        mPhotoButton = (ImageButton) v.findViewById(R.id.camera_button);
-        //   mPhotoView = (ImageView) v.findViewById(R.id.photo_view);
-
-
-        mPhotoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (isStoragePermissionGranted()) {
-                    takeImage();
-                }
-            }
-        });
-
-        return v;
-
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
-        inflater.inflate(R.menu.menu_home, menu);
-
-
-    }
-
-
-    /*public String getPhotoFilename() {
-        return "IMG_" + UUID.randomUUID().toString() + ".jpg";
-    }*/
-
-
-    public void takeImage() {
-        mPhotoFile = getOutputMediaFile();
-
-        PackageManager packageManager = getActivity().getPackageManager();
-
-        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        boolean canTakePhoto = mPhotoFile != null &&
-                captureImage.resolveActivity(packageManager) != null;
-        mPhotoButton.setEnabled(canTakePhoto);
-        if (canTakePhoto) {
-            Uri uri = Uri.fromFile(mPhotoFile);
-            captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        }
-
-        startActivityForResult(captureImage, REQUEST_PHOTO);
-
-
-    }
 
     /**
      * Create a File for saving an image
@@ -172,6 +83,90 @@ public class Camera extends Fragment {
                 "IMG_" + timeStamp + ".jpg");
 
         return mediaFile;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+/*
+        ((CollapsingToolbarLayout)getActivity().findViewById(R.id.home_ct)).setScrollY(0);
+*/
+        db = new SQLiteHelper(getActivity().getApplicationContext());
+        HashMap<String, String> values = db.getUserDetails();
+        utk = values.get("utk");
+        Log.d(LOG_TAG1, "utk" + utk);
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+
+        View v = inflater.inflate(R.layout.fragment_camera, container, false);
+
+        mFB_LinkButton = (FloatingActionButton) v.findViewById(R.id.open_fb_page);
+
+        mFB_LinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(mFB_URL));
+                startActivity(i);
+
+            }
+        });
+
+        mPhotoButton = (FloatingActionButton) v.findViewById(R.id.camera_button);
+        //   mPhotoView = (ImageView) v.findViewById(R.id.photo_view);
+
+
+        mPhotoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isStoragePermissionGranted()) {
+                    takeImage();
+                }
+            }
+        });
+
+        return v;
+
+
+    }
+
+
+    /*public String getPhotoFilename() {
+        return "IMG_" + UUID.randomUUID().toString() + ".jpg";
+    }*/
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.menu_home, menu);
+
+
+    }
+
+    public void takeImage() {
+        mPhotoFile = getOutputMediaFile();
+
+        PackageManager packageManager = getActivity().getPackageManager();
+
+        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        boolean canTakePhoto = mPhotoFile != null &&
+                captureImage.resolveActivity(packageManager) != null;
+        mPhotoButton.setEnabled(canTakePhoto);
+        if (canTakePhoto) {
+            Uri uri = Uri.fromFile(mPhotoFile);
+            captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+
+        startActivityForResult(captureImage, REQUEST_PHOTO);
+
+
     }
 
     public void addWatermark() {
