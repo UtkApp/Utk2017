@@ -47,7 +47,7 @@ public class MapsTest extends FragmentActivity implements LocationListener {
     public void settingLayout()
     {
 
-        googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+       // googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
 
         googleMap.setMyLocationEnabled(true);

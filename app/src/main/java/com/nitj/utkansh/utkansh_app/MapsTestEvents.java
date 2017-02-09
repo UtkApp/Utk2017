@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import static android.content.Context.LOCATION_SERVICE;
+
 public class MapsTestEvents extends FragmentActivity implements LocationListener {
 
     GoogleMap googleMap;
@@ -74,7 +76,7 @@ public class MapsTestEvents extends FragmentActivity implements LocationListener
 
     public void settingLayout()
     {
-        googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+       // googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
 
         googleMap.setMyLocationEnabled(true);

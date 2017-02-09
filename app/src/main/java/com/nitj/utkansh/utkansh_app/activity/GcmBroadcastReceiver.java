@@ -1,3 +1,4 @@
+/*
 package com.nitj.utkansh.utkansh_app.activity;
 
 import android.app.Activity;
@@ -13,4 +14,4 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
         startWakefulService(context, (intent.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);
     }
-}
+}*/

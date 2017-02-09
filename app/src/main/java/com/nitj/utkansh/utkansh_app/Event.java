@@ -10,6 +10,10 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -52,6 +56,7 @@ public class Event extends AppCompatActivity {
     MySQLiteHelper helperEvent;
     private ProgressDialog pDialog;
     private SQLiteHelper helperUser;
+    CoordinatorLayout main_content;
     private String URL_REGISTER_EVENT = "http://www.utkansh.com/UtkanshAndroidApp/RegisterEvents/new_register_for_events.php";
 
 
@@ -59,25 +64,17 @@ public class Event extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_new);
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-      //   Toolbar toolbar = (Toolbar) findViewById(R.id.MyToolbar);
-//        setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
-       // nameE=(TextView)findViewById(R.id.nameEvent);
-        //nameE.setText(name);
-
-
+        main_content=(CoordinatorLayout) findViewById(R.id.main_content);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
           collapsingToolbarLayout.setTitle(name);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
         //Context context = this;
-        collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#FF630016"));/*ContextCompat.getColor(context,R.color.orange)*/
+        collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#FF630016"));
+        /*ContextCompat.getColor(context,R.color.orange)*/
 
 
 
@@ -95,6 +92,7 @@ public class Event extends AppCompatActivity {
                 databaseEvent = helperEvent.getWritableDatabase();
 
                 if (cBox.isChecked()) {
+                    Snackbar.make(main_content,"Bookmarked!",Snackbar.LENGTH_SHORT);
                     databaseEvent.execSQL("update EventInfo set bookmark=1 where name=='" + name + "'");
                 } else {
                     databaseEvent.execSQL("update EventInfo set bookmark=0 where name=='" + name + "'");
@@ -105,7 +103,7 @@ public class Event extends AppCompatActivity {
 
 
         register = (Button)findViewById(R.id.registerEventButton);
-
+        //FloatingActionButton fab_register = (FloatingActionButton)findViewById(R.id.fab_register);
         databaseEvent = helperEvent.getReadableDatabase();
         Cursor cursor = databaseEvent.rawQuery("Select * from EventInfo where name=='" + name + "'", null);
 
@@ -114,10 +112,12 @@ public class Event extends AppCompatActivity {
             society=cursor.getString(2);
             if(society.equals("Others") || society.equals("Attractions"))
             {
+                //fab_register.setVisibility(View.GONE);
                 register.setVisibility(View.GONE);
                 teamLayout.setVisibility(View.GONE);
                 if(name.equals("Panache - Fashion Show")||name.equals("Mega Sonic - Battle Of Bands"))
                 {
+                    //fab_register.setVisibility(View.VISIBLE);
                     register.setVisibility(View.VISIBLE);
                     teamLayout.setVisibility(View.VISIBLE);
 
@@ -195,7 +195,25 @@ public class Event extends AppCompatActivity {
             }
         });
     }
+    public void onRegisterClick(View view){
+        Snackbar.make(main_content,"Do you want to register?",Snackbar.LENGTH_LONG)
+                .setAction("YES", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        team = editteam.getText().toString().trim();;
+                        if(team.equals(""))
+                        {
+                            Snackbar.make(main_content, "Please enter your team name", Snackbar.LENGTH_LONG).show();                }
+                        else
+                        {
+                            pDialog.setMessage("Registering ...");
+                            showDialog();
+                            registerForEvent();
+                        }
+                    }
+                }).setActionTextColor(getResources().getColor(R.color.bg_main)).show();
 
+    }
     public void registerForEvent()
     {
         HashMap<String,String> values = helperUser.getUserDetails();

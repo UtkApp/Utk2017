@@ -1,3 +1,4 @@
+/*
 package com.nitj.utkansh.utkansh_app;
 
 import android.content.Intent;
@@ -70,4 +71,4 @@ public class Notifications extends AppCompatActivity {
         super.onResume();
         checkPlayServices();
     }
-}
+}*/

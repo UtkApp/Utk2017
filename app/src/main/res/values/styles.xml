@@ -3,7 +3,7 @@
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/accent_material_light</item>
     </style>
-    <style name="MyEventTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MyEventListTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/myblack</item>
     </style>
 
@@ -18,7 +18,9 @@
 
     <style name="expandedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">24sp</item>
+<!--
         <item name="android:textColor">@color/white</item>
+-->
         <item name="android:textStyle">bold</item>
     </style>
 

@@ -35,14 +35,21 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Notifications;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nitj.utkansh.utkansh_app.activity.LoginActivity;
 import com.nitj.utkansh.utkansh_app.helper.SQLiteHelper;
 import com.nitj.utkansh.utkansh_app.helper.SessionManager;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.util.concurrent.ExecutionException;
+
+import static com.google.android.gms.analytics.internal.zzy.D;
+import static com.google.android.gms.analytics.internal.zzy.e;
 
 public class Home extends AppCompatActivity {
     public static final String LOG_TAG = Home.class.getSimpleName();
@@ -112,14 +119,28 @@ public class Home extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        Runnable runnable = new Runnable() {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("version");
+
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void run() {
-                Checkversion();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Double value = dataSnapshot.getValue(Double.class);
+                Log.d(LOG_TAG, "Value is: " + value);
+                Checkversion(value);
+
             }
-        };
-        Thread chkVerthread = new Thread(runnable);
-        //chkVerthread.start();
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(LOG_TAG, "Failed to read value.", error.toException());
+            }
+        });
+
     }
 
     public void onCall0(View view) {
@@ -138,6 +159,7 @@ public class Home extends AppCompatActivity {
         }
         startActivity(phoneCallIntent);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();
@@ -156,12 +178,12 @@ public class Home extends AppCompatActivity {
         return true;
 
     }
-    private Intent createShareForecastIntent()
-    {
-        Intent shareIntent=new Intent(Intent.ACTION_SEND);
+
+    private Intent createShareForecastIntent() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT,"A lot of interesting events at Utkansh'16 and don't want to miss any of them? Check out the official app for NIT Jalandhar Utkansh'16, Vernal Parade with features like In-App Registration, Real Time Notifications, GPS Navigation, Buy Merchandise, Full Schedule and a lot more. Download now at http://play.google.com/store/apps/details?id=com.nitj.utkansh.utkansh2016 ");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "A lot of interesting events at Utkansh'16 and don't want to miss any of them? Check out the official app for NIT Jalandhar Utkansh'16, Vernal Parade with features like In-App Registration, Real Time Notifications, GPS Navigation, Buy Merchandise, Full Schedule and a lot more. Download now at http://play.google.com/store/apps/details?id=com.nitj.utkansh.utkansh2016 ");
         return shareIntent;
     }
 
@@ -173,8 +195,8 @@ public class Home extends AppCompatActivity {
                 //getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
-            public void onDrawerOpened(View drawerView)
-            {
+
+            public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 //getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -187,8 +209,7 @@ public class Home extends AppCompatActivity {
 
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu)
-    {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         // boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         //menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
@@ -196,8 +217,7 @@ public class Home extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -206,7 +226,7 @@ public class Home extends AppCompatActivity {
 /*
             ActivityOptionsCompat activityOptionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
 */
-            Intent intent = new Intent(this,SearchActivity.class);
+            Intent intent = new Intent(this, SearchActivity.class);
             this.startActivity(intent/*,activityOptionsCompat.toBundle()*/);
             return true;
 
@@ -275,8 +295,7 @@ public class Home extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    private void selectItem(int position)
-    {
+    private void selectItem(int position) {
         Intent intent;
         switch (position) {
             case 1:
@@ -296,19 +315,19 @@ public class Home extends AppCompatActivity {
                 intent = new Intent(this, Merchandise.class);
                 startActivity(intent);
                 break;
-            case 5:
+          /*  case 5:
                 intent = new Intent(this, Notifications.class);
                 startActivity(intent);
-                break;
-            case 6:
+                break;*/
+            case 5:
                 logoutUser();
                 break;
 
-            case 7:
+            case 6:
                 intent = new Intent(this, Developers.class);
                 startActivity(intent);
                 break;
-            case 8:
+            case 7:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
@@ -318,7 +337,7 @@ public class Home extends AppCompatActivity {
 
 
             default:
-                intent=null;
+                intent = null;
 
         }
 
@@ -342,36 +361,23 @@ public class Home extends AppCompatActivity {
         finish();
     }
 
-    //For Making sure app is updated
-    private String getCurrentVersion(){
-        PackageManager pm = this.getPackageManager();
-        PackageInfo pInfo = null;
 
-        try {
-            pInfo =  pm.getPackageInfo(this.getPackageName(),0);
-
-        } catch (PackageManager.NameNotFoundException e1) {
-            e1.printStackTrace();
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
         }
-        String currentVersion = pInfo.versionName;
-
-        return currentVersion;
     }
 
-    private void Checkversion() {
-        String latestVersion = "";
-        String currentVersion = getCurrentVersion();
+
+    private void Checkversion(double latestVersion) {
+        Double currentVersion = getCurrentVersion();
         Log.d(LOG_TAG, "Current version = " + currentVersion);
-        try {
-            latestVersion = new GetLatestVersion().execute().get();
-            Log.d(LOG_TAG, "Latest version = " + latestVersion);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+
+        Log.d(LOG_TAG, "Latest version = " + latestVersion);
+
         //If the versions are not the same
-        if ((!currentVersion.equals(latestVersion)) && (latestVersion != null && !latestVersion.isEmpty())) {
+        if ((latestVersion>currentVersion) ) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("An Update is Available");
             builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
@@ -397,44 +403,28 @@ public class Home extends AppCompatActivity {
 
     }
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
+    private Double getCurrentVersion() {
+        PackageManager pm = this.getPackageManager();
+        PackageInfo pInfo = null;
+
+        try {
+            pInfo = pm.getPackageInfo(this.getPackageName(), 0);
+
+        } catch (PackageManager.NameNotFoundException e1) {
+            e1.printStackTrace();
         }
+        String currentVersion = pInfo.versionName;
+        Double currentVersiond= Double.parseDouble(currentVersion);
+        return currentVersiond;
     }
 
-    private class GetLatestVersion extends AsyncTask<String, String, String> {
-        String latestVersion;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                //It retrieves the latest version by scraping the content of current version from play store at runtime
-                String urlOfAppFromPlayStore = "https://play.google.com/store/apps/details?id=com.nitj.utkansh.utkansh2016";
-                Document doc = Jsoup.connect(urlOfAppFromPlayStore).get();
-                latestVersion = doc.getElementsByAttributeValue("itemprop","softwareVersion").first().text();
-
-            }catch (Exception e){
-                e.printStackTrace();
-
-            }
-
-            return latestVersion;
-        }
-    }
 
 }
 
 
 class MyAdapter extends FragmentStatePagerAdapter {
 
-    private String tabTitles[] = new String[]{ "Clubs", "Sponsors","Camera", "Contact Us"};
+    private String tabTitles[] = new String[]{"Clubs", "Sponsors", "Camera", "Contact Us"};
 
     public MyAdapter(FragmentManager fm) {
         super(fm);
@@ -449,8 +439,7 @@ class MyAdapter extends FragmentStatePagerAdapter {
             fragment = new Sponsors();
         } else if (position == 2) {
             fragment = new Camera();
-        }
-        else if (position == 3) {
+        } else if (position == 3) {
             fragment = new Contact();
         }
 

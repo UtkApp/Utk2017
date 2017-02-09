@@ -27,7 +27,7 @@ public class EventList extends AppCompatActivity {
 
         Intent intent = getIntent();
         String society = intent.getStringExtra("society");
-
+        setTitle(society);
         Vector<String> names = new Vector<String>();
         MySQLiteHelper helper = new MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();

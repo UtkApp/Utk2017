@@ -1,42 +1,55 @@
 {
   "project_info": {
-    "project_id": "utkansh2016-87649",
-    "project_number": "756728653761",
-    "name": "Utkansh2016"
+    "project_number": "477640579104",
+    "firebase_url": "https://utkansh-dev-c2672.firebaseio.com",
+    "project_id": "utkansh-dev-c2672",
+    "storage_bucket": "utkansh-dev-c2672.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:756728653761:android:8d872eae1ecac445",
-        "client_id": "com.nitj.utkansh",
-        "client_type": 1,
+        "mobilesdk_app_id": "1:477640579104:android:8d872eae1ecac445",
         "android_client_info": {
           "package_name": "com.nitj.utkansh.utkansh2016"
         }
       },
-      "oauth_client": [],
-      "api_key": [],
+      "oauth_client": [
+        {
+          "client_id": "477640579104-gc6khe87i6s30nhcrp94iklobca3qave.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitj.utkansh.utkansh2016",
+            "certificate_hash": "01AA6BBA8A9A94EEC277DAB667B0207143049972"
+          }
+        },
+        {
+          "client_id": "477640579104-r2vu93i7ehqas0ea57d37algfh3kj3in.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjzx5hNiL8eV_RJ-LYyXFy_quDaLDVhcw"
+        }
+      ],
       "services": {
         "analytics_service": {
           "status": 1
         },
-        "cloud_messaging_service": {
-          "status": 2,
-          "apns_config": []
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "google_signin_service": {
-          "status": 1
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477640579104-r2vu93i7ehqas0ea57d37algfh3kj3in.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
   ],
-  "client_info": [],
-  "ARTIFACT_VERSION": "1"
+  "configuration_version": "1"
 }

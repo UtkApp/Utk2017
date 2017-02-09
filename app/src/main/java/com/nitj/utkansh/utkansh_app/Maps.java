@@ -55,7 +55,7 @@ public class Maps extends AppCompatActivity implements GoogleApiClient.Connectio
                     .build();
         }
 
-        googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+      //  googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
         //  locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);

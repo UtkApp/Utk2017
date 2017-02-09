@@ -1,3 +1,4 @@
+/*
 package com.nitj.utkansh.utkansh_app.activity;
 
 import android.app.IntentService;
@@ -37,7 +38,8 @@ public class GCMNotificationIntentService extends IntentService {
 
         String messageType = gcm.getMessageType(intent);
 
-        if (!extras.isEmpty()) {
+       */
+/* if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR
                     .equals(messageType)) {
                 sendNotification("Send error: " + extras.toString());
@@ -67,7 +69,8 @@ public class GCMNotificationIntentService extends IntentService {
                 }
 
             }
-        }
+        }*//*
+
         GcmBroadcastReceiver.completeWakefulIntent(intent);
     }
     private void sendNotification(String notification) {
@@ -103,4 +106,4 @@ public class GCMNotificationIntentService extends IntentService {
         // Post a notification
         mNotificationManager.notify(notifyID, mNotifyBuilder.build());
     }
-}
+}*/

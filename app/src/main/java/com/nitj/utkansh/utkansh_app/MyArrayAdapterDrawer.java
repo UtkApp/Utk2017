@@ -41,10 +41,10 @@ public class MyArrayAdapterDrawer extends ArrayAdapter<String> {
             imageView.setImageResource(R.drawable.merchandise_icon);
         }else if (s.equals("Notifications")) {
 
-            imageView.setImageResource(R.drawable.notification_icon);
+            imageView.setImageResource(R.drawable.notification);
         }
        else if (s.equals("Logout")) {
-            imageView.setImageResource(R.drawable.moveouticon);}
+            imageView.setImageResource(R.drawable.logout);}
         else if (s.equals("Developers")) {
 
             imageView.setImageResource(R.drawable.developers_icon);
