@@ -34,19 +34,18 @@ import java.util.List;
 
 public class OrderTshirt extends Fragment {
 
-    private String URL_TSHIRT = "http://www.utkansh.com/UtkanshAndroidApp/Tshirt/new_tshirt.php";
     String quantity1,quantity2,quantity3,Stringsize,Stringroomno,Stringhostel;
-    Spinner spinnerBH,spinnerGH,t1,t2,t3,spinnerSize;
+    Spinner spinnerBH,spinnerGH,t1,t2,spinnerSize;
     LinearLayout llmale,llfemale;
     RadioGroup rg;
-    int type1,type2,type3,amount;
+    int type1,type2,amount,type3=0;//changed
     EditText Editroomno;
-    private ProgressDialog pDialog;
-
-    private SQLiteHelper db;
     boolean error;
-
     Button btn;
+    private String URL_TSHIRT = "http://www.utkansh.com/UtkanshAndroidApp/Tshirt/new_tshirt.php";
+    private ProgressDialog pDialog;
+    private SQLiteHelper db;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class OrderTshirt extends Fragment {
         spinnerSize=(Spinner)rootview.findViewById(R.id.spinner7);
         t1 = (Spinner)rootview.findViewById(R.id.t1);
         t2 =(Spinner) rootview.findViewById(R.id.t2);
-        t3=(Spinner) rootview.findViewById(R.id.t3);
+        //t3=(Spinner) rootview.findViewById(R.id.t3);
         Editroomno =(EditText)rootview.findViewById(R.id.room);
         btn=(Button)rootview.findViewById(R.id.orderButton);
         String[] boys_hostel = getResources().getStringArray(R.array.boys_hostel);
@@ -162,7 +161,7 @@ public class OrderTshirt extends Fragment {
             }
 
         });
-        t3.setAdapter(adapter3);
+        /*t3.setAdapter(adapter3);
         t3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -182,7 +181,7 @@ public class OrderTshirt extends Fragment {
                 quantity1 = "0";
             }
 
-        });
+        });*/
         spinnerSize.setAdapter(adapter4);
         spinnerSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -222,6 +221,24 @@ public class OrderTshirt extends Fragment {
         return rootview;
     }
 
+    public int addallType(int a,int b,int c)
+    {
+        int d=a+b+c;
+        return d;
+    }
+
+    private void showDialog()
+    {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
+
+    private void hideDialog()
+    {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
+    }
+
     private class HttpAsyncTask extends AsyncTask< String, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -232,7 +249,7 @@ public class OrderTshirt extends Fragment {
         protected Void doInBackground(String arg[]) {
             String q1 = arg[0];
             String q2 = arg[1];
-            String q3 = arg[2];
+            //String q3 = arg[2];
             String s = arg[3];
             String r = arg[4];
             String h = arg[5];
@@ -240,7 +257,7 @@ public class OrderTshirt extends Fragment {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("quantity1", q1));
             params.add(new BasicNameValuePair("quantity2", q2));
-            params.add(new BasicNameValuePair("quantity3", q3));
+            //params.add(new BasicNameValuePair("quantity3", q3));
             params.add(new BasicNameValuePair("size", s));
             params.add(new BasicNameValuePair("roomno", r));
             params.add(new BasicNameValuePair("hostel", h));
@@ -282,23 +299,6 @@ public class OrderTshirt extends Fragment {
                 Toast.makeText(getActivity(),"Failed to order T-shirts! Please try after some time", Toast.LENGTH_LONG).show();
             }
         }
-    }
-    public int addallType(int a,int b,int c)
-    {
-        int d=a+b+c;
-        return d;
-    }
-
-    private void showDialog()
-    {
-        if (!pDialog.isShowing())
-            pDialog.show();
-    }
-
-    private void hideDialog()
-    {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
     }
 
 }

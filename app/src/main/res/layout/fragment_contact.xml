@@ -12,35 +12,42 @@
         android:padding="15dp">
 
         <ImageView
+            android:id="@+id/cnt_img1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
             android:onClick="onCall0"
-            android:src="@drawable/amulya" />
+            android:src="@drawable/amulya"
+            />
         <ImageView
+            android:id="@+id/cnt_img2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
             android:src="@drawable/ajay"/>
         <ImageView
+            android:id="@+id/cnt_img3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
             android:src="@drawable/dinesh"/>
         <ImageView
+            android:id="@+id/cnt_img4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
             android:src="@drawable/lovekesh"/>
         <ImageView
+            android:id="@+id/cnt_img5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/aishwarya"/>
+            android:src="@drawable/aishwarya"
+            />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

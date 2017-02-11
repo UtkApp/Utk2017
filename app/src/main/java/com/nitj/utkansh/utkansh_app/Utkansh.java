@@ -27,6 +27,5 @@ public class Utkansh extends AppCompatActivity {
             }
         };
         handler.postDelayed(runnable, secondsDelayed * 2000);
-
     }
 }

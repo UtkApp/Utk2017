@@ -1,12 +1,15 @@
 package com.nitj.utkansh.utkansh_app;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nitj.utkansh.utkansh_app.ImgLoader.BitmapLoader;
 
 public class MyArrayAdapterDrawer extends ArrayAdapter<String> {
     private final Context context;
@@ -29,28 +32,42 @@ public class MyArrayAdapterDrawer extends ArrayAdapter<String> {
 
         // Change icon based on name
         String s = values[position];
-
+        Bitmap bmp;
         //System.out.println(s);
         if (s.equals("Profile")) {
+            /*bmp= BitmapLoader.decodeSampledBitmapFromResource(
+                    context.getResources(),R.drawable.profile_icon,50,50);
+            imageView.setImageBitmap(bmp);*/
             imageView.setImageResource(R.drawable.profile_icon);
-        } else if (s.equals("Bookmarks")) {
-            imageView.setImageResource(R.drawable.bookmark_icon);
         } else if (s.equals("Maps")) {
-            imageView.setImageResource(R.drawable.map_icon);}
+            /*bmp= BitmapLoader.decodeSampledBitmapFromResource(
+                    context.getResources(),R.drawable.map_icon,50,50);
+            imageView.setImageBitmap(bmp);*/
+            imageView.setImageResource(R.drawable.map_icon);
+        }else if (s.equals("Notifications")) {
+            /*bmp= BitmapLoader.decodeSampledBitmapFromResource(
+                    context.getResources(),R.drawable.notification,50,50);
+            imageView.setImageBitmap(bmp);*/
+             imageView.setImageResource(R.drawable.notification);
+        }else if (s.equals("Logout")) {
+            /*bmp= BitmapLoader.decodeSampledBitmapFromResource(
+                    context.getResources(),R.drawable.logout,50,50);
+            imageView.setImageBitmap(bmp);*/
+            imageView.setImageResource(R.drawable.logout);
+        }
         else if (s.equals("Merchandise")) {
             imageView.setImageResource(R.drawable.merchandise_icon);
-        }else if (s.equals("Notifications")) {
-
-            imageView.setImageResource(R.drawable.notification_icon);
+        } else if (s.equals("Bookmarks")) {
+            imageView.setImageResource(R.drawable.bookmark_icon);
         }
-       else if (s.equals("Logout")) {
-            imageView.setImageResource(R.drawable.moveouticon);}
         else if (s.equals("Developers")) {
 
             imageView.setImageResource(R.drawable.developers_icon);
         }
         else if (s.equals("Share")) {
-
+            /*bmp= BitmapLoader.decodeSampledBitmapFromResource(
+                    context.getResources(),R.drawable.share_icon,50,50);
+            imageView.setImageBitmap(bmp);*/
             imageView.setImageResource(R.drawable.share_icon);
         }
         return rowView;

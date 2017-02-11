@@ -14,9 +14,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -28,6 +30,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -39,8 +42,7 @@ import com.nitj.utkansh.utkansh_app.activity.LoginActivity;
 import com.nitj.utkansh.utkansh_app.helper.SQLiteHelper;
 import com.nitj.utkansh.utkansh_app.helper.SessionManager;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+
 
 import java.util.concurrent.ExecutionException;
 
@@ -48,6 +50,7 @@ public class Home extends AppCompatActivity {
     public static final String LOG_TAG = Home.class.getSimpleName();
     public static final String REG_ID = "regId";
     public static final String EMAIL_ID = "eMailId";
+    static TabLayout tabLayout;
     ViewPager viewPager = null;
     private SessionManager session;
     private SQLiteHelper db;
@@ -94,7 +97,6 @@ public class Home extends AppCompatActivity {
         mTitle = mDrawerTitle = getTitle();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
         setupDrawer();
 
         if (!session.isLoggedIn()) {
@@ -102,24 +104,40 @@ public class Home extends AppCompatActivity {
         }
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        final TabLayout tabLayout;
-        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager(),Home.this));
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+           @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0 :setTitle("Clubs");break;
+                    case 1 :setTitle("Sponsors");break;
+                    case 2 :setTitle("Camera");break;
+                    default:setTitle("Contact Us");break;
+                }
+            }
+            @Override
+            public void onPageScrolled(int position,float positionOffset,int positionOffsetPixels){}
+            @Override
+            public void onPageScrollStateChanged(int state) {            }
+        });
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setBackgroundColor(Color.parseColor("#FF4D0011"));
-        tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#ef6c00"));
+        tabLayout.setBackgroundColor(Color.parseColor("#FF0063B1"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#ffFF4081"));
         tabLayout.setupWithViewPager(viewPager);
+        setTabIcons(tabLayout);
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Checkversion();
-            }
-        };
-        Thread chkVerthread = new Thread(runnable);
-        //chkVerthread.start();
+
+    }
+
+    private void setTabIcons(final TabLayout tabLayout) {
+        tabLayout.getTabAt(0).setIcon(R.drawable.clubs);
+        tabLayout.getTabAt(1).setIcon(R.drawable.money);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_camera);
+        tabLayout.getTabAt(3).setIcon(android.R.drawable.ic_menu_call);
     }
 
     public void onCall0(View view) {
@@ -142,17 +160,6 @@ public class Home extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();
         getMenuInflater().inflate(R.menu.menu_home, menu);
-
-        /*MenuItem menuItem=menu.findItem(R.id.action_search);
-        ShareActionProvider mShareActionProvider=new ShareActionProvider(this);
-        if(mShareActionProvider!=null)
-        {
-            mShareActionProvider.setShareIntent(createShareForecastIntent());
-            MenuItemCompat.setActionProvider(menuItem, mShareActionProvider);
-        }
-        else
-        {
-        }*/
         return true;
 
     }
@@ -203,9 +210,7 @@ public class Home extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_search) {
-/*
-            ActivityOptionsCompat activityOptionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
-*/
+            //ActivityOptionsCompat activityOptionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
             Intent intent = new Intent(this,SearchActivity.class);
             this.startActivity(intent/*,activityOptionsCompat.toBundle()*/);
             return true;
@@ -342,60 +347,6 @@ public class Home extends AppCompatActivity {
         finish();
     }
 
-    //For Making sure app is updated
-    private String getCurrentVersion(){
-        PackageManager pm = this.getPackageManager();
-        PackageInfo pInfo = null;
-
-        try {
-            pInfo =  pm.getPackageInfo(this.getPackageName(),0);
-
-        } catch (PackageManager.NameNotFoundException e1) {
-            e1.printStackTrace();
-        }
-        String currentVersion = pInfo.versionName;
-
-        return currentVersion;
-    }
-
-    private void Checkversion() {
-        String latestVersion = "";
-        String currentVersion = getCurrentVersion();
-        Log.d(LOG_TAG, "Current version = " + currentVersion);
-        try {
-            latestVersion = new GetLatestVersion().execute().get();
-            Log.d(LOG_TAG, "Latest version = " + latestVersion);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        //If the versions are not the same
-        if ((!currentVersion.equals(latestVersion)) && (latestVersion != null && !latestVersion.isEmpty())) {
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("An Update is Available");
-            builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Click button action
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.nitj.utkansh.utkansh2016")));
-                    dialog.dismiss();
-                }
-            });
-
-            builder.setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Cancel button action
-                }
-            });
-
-            builder.setCancelable(false);
-            builder.show();
-        }
-
-
-    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -404,40 +355,16 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private class GetLatestVersion extends AsyncTask<String, String, String> {
-        String latestVersion;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                //It retrieves the latest version by scraping the content of current version from play store at runtime
-                String urlOfAppFromPlayStore = "https://play.google.com/store/apps/details?id=com.nitj.utkansh.utkansh2016";
-                Document doc = Jsoup.connect(urlOfAppFromPlayStore).get();
-                latestVersion = doc.getElementsByAttributeValue("itemprop","softwareVersion").first().text();
-
-            }catch (Exception e){
-                e.printStackTrace();
-
-            }
-
-            return latestVersion;
-        }
-    }
-
 }
 
 
 class MyAdapter extends FragmentStatePagerAdapter {
 
+    Home context;
     private String tabTitles[] = new String[]{ "Clubs", "Sponsors","Camera", "Contact Us"};
-
-    public MyAdapter(FragmentManager fm) {
+    public MyAdapter(FragmentManager fm,Home cntx) {
         super(fm);
+        context = cntx;
     }
 
     @Override
@@ -446,14 +373,13 @@ class MyAdapter extends FragmentStatePagerAdapter {
         if (position == 0) {
             fragment = new ClubsNew();
         } else if (position == 1) {
-            fragment = new Sponsors();
+            fragment = new Sponsors();//context.setTitle("1");
         } else if (position == 2) {
-            fragment = new Camera();
+            fragment = new Camera();//context.setTitle("2");
         }
         else if (position == 3) {
-            fragment = new Contact();
+            fragment = new Contact();//context.setTitle("3");
         }
-
         return fragment;
     }
 
@@ -465,8 +391,10 @@ class MyAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return tabTitles[position];
+        //return tabTitles[position];
+        return "";
     }
+
 }
 
 

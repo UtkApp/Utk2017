@@ -107,14 +107,13 @@
             android:name=".EventList"
             android:label="List of Events"
             android:screenOrientation="portrait"
-            android:theme="@style/MyEventTheme"
-            />
+            android:theme="@style/MyEventListTheme" />
         <activity
             android:name=".Event"
             android:label="Event Description"
             android:screenOrientation="portrait"
-            />
-      <!--  android:theme="@style/AppTheme.NoActionBar"-->
+            android:theme="@style/MyEventTheme" />
+        <!-- :theme="@style/AppTheme.NoActionBar" -->
 
         <activity
             android:name=".Merchandise"
@@ -168,7 +167,7 @@
             android:name=".Developers"
             android:label="@string/title_activity_developers"
             android:parentActivityName=".Home"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -178,6 +177,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".RulesActivity"
+            android:label="RuleBook">
+
+        </activity>
     </application>
 
 </manifest>

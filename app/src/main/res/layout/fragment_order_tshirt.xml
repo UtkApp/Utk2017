@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
             android:text="Utkansh Tshirt"
             android:textColor="#424242"
-            android:textStyle="bold"
             android:textSize="26sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"/>
+            android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
             android:orientation="vertical"
+            android:padding="10dp"
             >
             <TextView
-                android:text="Quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Quantity"
                 android:textColor="#ef6c00"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,8 +55,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
 
                 </Spinner>
             </LinearLayout>
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -85,25 +85,25 @@
                     android:layout_height="wrap_content"
                     android:drawSelectorOnTop="true">
                 </Spinner>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
             android:orientation="vertical"
+            android:padding="10dp"
             >
             <TextView
 
-                android:text="Size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Size"
                 android:textColor="#ef6c00"
-                android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginBottom="10dp" />
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner7"
@@ -116,18 +116,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
             <TextView
 
-                android:text="Gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Gender"
                 android:textColor="#ef6c00"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/gender"
@@ -137,19 +137,19 @@
 
                 <RadioButton
                     android:id="@+id/MaleTshirt"
-                    android:text="Male "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:padding="5dp"
-                    android:textSize="16sp"
-                    android:checked="true" />
+                    android:text="Male "
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/FemaleTshirt"
-                    android:text="Female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
+                    android:text="Female"
                     android:textSize="16sp" />
             </RadioGroup>
         </LinearLayout>
@@ -159,18 +159,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
             <TextView
 
-                android:text="Deliverable at"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Deliverable at"
                 android:textColor="#ef6c00"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"  />
+                android:textStyle="bold"  />
 
             <Spinner
                 android:id="@+id/spinner2"
@@ -180,23 +180,23 @@
 
         </LinearLayout>
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/llfemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone">
             <TextView
 
-                android:text="Deliverable at"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Deliverable at"
                 android:textColor="#ef6c00"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"  />
+                android:textStyle="bold"  />
 
             <Spinner
                 android:id="@+id/spinner3"
@@ -210,26 +210,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
             <TextView
 
-                android:text="Room no."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Room no."
                 android:textColor="#ef6c00"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
+                android:textStyle="bold" />
             <EditText
                 android:id="@+id/room"
-                android:inputType="number"
-                android:background="@color/white"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:textSize="16sp"
                 android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:inputType="number"
+                android:textSize="16sp"
 
 
                 />
@@ -239,56 +239,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:background="@drawable/bg_form_rounded"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
             <TextView
 
-                android:text="Total amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Total amount"
                 android:textColor="#ef6c00"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/amount"
-                android:text="245"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="245"
                 android:textSize="16sp"
                 />
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp">
 
             <Button
                 android:id="@+id/orderButton"
-                android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order"
-                android:paddingTop="10dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_button_rounded"
+                android:onClick="onSubmit"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:text="Order"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/bg_button_rounded"
-                android:onClick="onSubmit" />
+                android:textStyle="bold" />
         </RelativeLayout>
 
 
         <TextView
-            android:textSize="16sp"
-            android:text="For further queries Contact:\n+91-8591960379\n+91-9569733216"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:text="For further queries Contact:\n+91-8591960379\n+91-9569733216"
+            android:textSize="16sp"/>
     </LinearLayout>
 </ScrollView>

@@ -1,10 +1,18 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--<style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/accent_material_light</item>
+    </style>-->
+    <!--  <item name="colorPrimary">#FF4DD0E1</item>
+        <item name="colorAccent">#FF4DD0E1</item>-->
+    <style name="MyEventListTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#FF0063B1</item>
     </style>
-    <style name="MyEventTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/myblack</item>
+    <!--<item name="colorPrimary">#FFFE6016</item>
+        <item name="colorAccent">#FFFE6016</item>
+        <item name="android:colorForeground">#FFFE6016</item>-->
+    <style name="MyEventTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#FFF7630C</item>
     </style>
 
     <!-- Application theme. -->
@@ -18,15 +26,21 @@
 
     <style name="expandedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">24sp</item>
-        <item name="android:textColor">@color/white</item>
+                <item name="android:textColor">#FF0063b1</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="expandedappbar0" parent="@android:style/TextAppearance.Medium">
+    <item name="android:textSize">24sp</item>
+            <item name="android:textColor">#ffffff</item>
+    <item name="android:textStyle">bold</item>
+</style>
 
     <style name="collapsedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
-
+    FF202A6F
     <style name="edit_text" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/accent_material_light</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

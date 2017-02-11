@@ -1,26 +1,48 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="1dp"
-    android:theme="@style/MyEventTheme">
+    android:theme="@style/MyEventListTheme">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/el_ctl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="#FF4D0011"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-            <ImageView
-                android:id="@+id/el_img"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+            <!--
+-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/MyToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/attractions"/>
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="parallax"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/cover_el"
+                android:transitionName="club_tx"
+                >
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/el_img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="27dp"
+                    android:src="@drawable/fine_arts_club"
+                    app:civ_border_color="#0063be"
+                    app:civ_border_width="4dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="10" />
+            </RelativeLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -28,7 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="fill_vertical"
-        android:background="@drawable/bgb"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -37,7 +58,9 @@
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:divider="@color/background"
+            android:dividerHeight="2dp"
             >
         </ListView>
 

@@ -28,8 +28,8 @@ public class Merchandise extends ActionBarActivity {
 
 
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabsTshirt);
-        tabLayout.setBackgroundColor(Color.parseColor("#424242"));
-        tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#ef6c00"));
+        tabLayout.setBackgroundColor(Color.parseColor("#ff424242"));
+        tabLayout.setTabTextColors(Color.parseColor("#ffffffff"), Color.parseColor("#ffef6c00"));
         tabLayout.setupWithViewPager(viewPager);
     }
 

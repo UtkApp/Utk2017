@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     >
 
     <Button
@@ -45,13 +46,16 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/sponsors"/>
-</ScrollView>
+        />
+<!--
+        android:src="@drawable/sponsors"
+-->
+
+    </ScrollView>
 
 
 </LinearLayout>

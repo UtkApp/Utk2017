@@ -9,19 +9,21 @@
     <ImageView
         android:id="@+id/logoClubs"
         android:layout_width="35dp"
-        android:layout_height="50px"
+        android:layout_height="match_parent"
         android:layout_marginLeft="5px"
         android:layout_marginRight="20px"
         android:layout_marginTop="5px"
-        android:src="@mipmap/ic_launcher" />
-
+        android:minHeight="50dp"
+        android:src="@drawable/music_club"
+        />
+<!--        android:src="@mipmap/ic_launcher"
+-->
     <TextView
         android:id="@+id/labelClubs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Label"
-        android:textAlignment="center"
-        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="Swarag"
+        android:textColor="#000000"
         android:textSize="17sp"
         android:textStyle="bold"
         />

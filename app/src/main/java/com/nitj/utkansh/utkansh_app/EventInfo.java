@@ -15,7 +15,8 @@ public class EventInfo {
                 + "venue text,"//5
                 + "bookmark integer not null default 0,"//6
                 +"location text,"//7
-                +"img integer"//8
+                +"img integer,"//8
+                +"rulebook text default 'n/a' "//9
                 + ")";
         db.execSQL(query);
     }

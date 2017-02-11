@@ -88,9 +88,6 @@ public class Camera extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*
-        ((CollapsingToolbarLayout)getActivity().findViewById(R.id.home_ct)).setScrollY(0);
-*/
         db = new SQLiteHelper(getActivity().getApplicationContext());
         HashMap<String, String> values = db.getUserDetails();
         utk = values.get("utk");
@@ -136,8 +133,7 @@ public class Camera extends Fragment {
 
     }
 
-
-    /*public String getPhotoFilename() {
+/*public String getPhotoFilename() {
         return "IMG_" + UUID.randomUUID().toString() + ".jpg";
     }*/
 

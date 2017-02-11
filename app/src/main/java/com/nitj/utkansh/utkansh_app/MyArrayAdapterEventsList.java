@@ -52,7 +52,7 @@ public class MyArrayAdapterEventsList extends ArrayAdapter<String> {
         } else if (s.equals(clubs[8])) {
             imageView.setImageResource(R.drawable.rajbhasha);
         } else if (s.equals(clubs[9])) {
-            imageView.setImageResource(R.drawable.yoga);
+            imageView.setImageResource(R.drawable.ic_quest);
         } else if (s.equals(clubs[10])) {
             imageView.setImageResource(R.drawable.miscelle);
         }

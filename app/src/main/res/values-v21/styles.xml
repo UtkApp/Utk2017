@@ -8,9 +8,11 @@
     </style>
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/accent_material_light</item>
-        <item name="android:statusBarColor">@color/accent_material_light</item>
-        <item name="android:navigationBarColor">@color/accent_material_light</item>
+        <item name="colorPrimary">#FF0063B1</item>
+        <item name="android:statusBarColor">#FF80C7FF</item>
+        <item name="android:navigationBarColor">#FF80C7FF</item>
+        <item name="colorAccent">#ffFF4081</item>
+        <item name="colorPrimaryDark">#FF80C7FF</item>
     </style>
 
     <style name="edit_text" parent="Theme.AppCompat.Light">
@@ -18,6 +20,27 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/accent_material_light</item>
         <item name="android:statusBarColor">@color/accent_material_light</item>
+    </style>
+
+    <style name="MyEventTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#FFF7630C</item>
+        <item name="colorAccent">#FFFE6016</item>
+        <item name="android:colorForeground">#FFFE6016</item>
+        <item name="android:statusBarColor">#FFFE6016</item>
+        <item name="android:navigationBarColor">#FFFE6016</item>
+    </style>
+
+    <style name="MyEventListTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#FF0063B1</item>
+        <item name="colorAccent">#FF4DD0E1</item>
+        <item name="android:statusBarColor">#FF4DD0E1</item>
+        <item name="android:navigationBarColor">#FF024173</item>
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:typeface">sans</item>
+        <item name="android:statusBarColor">#005598</item>
+        <item name="android:navigationBarColor">#005598</item>
     </style>
 </resources>
 

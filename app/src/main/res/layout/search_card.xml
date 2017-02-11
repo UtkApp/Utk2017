@@ -2,15 +2,14 @@
 <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">-->
-    <android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/cv_datacard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="3dp"
-        android:background="#fff"
-        >
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_datacard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="#fff"
+    app:cardCornerRadius="5dp">
         <TextView
             android:id="@+id/text_data"
             android:layout_width="match_parent"
@@ -18,8 +17,10 @@
             android:focusable="true"
            android:paddingLeft="40dp"
             android:text="data"
-            android:textColor="#FF630016"
-            android:textSize="15sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="25sp"/>
+    <!--            android:fontFamily="sans-serif-condensed"
+-->
     </android.support.v7.widget.CardView>
 
 

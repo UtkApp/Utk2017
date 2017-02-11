@@ -3,7 +3,10 @@ package com.nitj.utkansh.utkansh_app;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,12 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nitj.utkansh.utkansh_app.ImgLoader.BitmapLoader;
+
 import java.util.Vector;
 
 public class EventList extends AppCompatActivity {
 
     TextView tv;
-    String event;
+    String event,eventname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,6 @@ public class EventList extends AppCompatActivity {
 
         Intent intent = getIntent();
         String society = intent.getStringExtra("society");
-
         Vector<String> names = new Vector<String>();
         MySQLiteHelper helper = new MySQLiteHelper(getBaseContext(), "mydatabase.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
@@ -36,8 +40,17 @@ public class EventList extends AppCompatActivity {
             event = cursor.getString(1);
             names.addElement(event);
         }
-        ImageView imageView =(ImageView)findViewById(R.id.el_img);
-        imageView.setImageResource(getImgID(society));
+        CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout)findViewById(R.id.el_ctl);
+        collapsingToolbarLayout.setTitle(society);
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar0);
+        collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(this,R.color.my_dark_blue));
+
+        com.mikhaellopez.circularimageview.CircularImageView imageView =(com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.el_img);
+        Bitmap bmp= BitmapLoader.decodeSampledBitmapFromResource(
+                getResources(),getImgID(society),(int)BitmapLoader.convertDpToPixel(100,this)
+                ,(int)BitmapLoader.convertDpToPixel(100,this));
+        imageView.setImageBitmap(bmp);
         String[] events = names.toArray(new String[names.size()]);
         MyArrayAdapterEventsList adapter = new MyArrayAdapterEventsList(this,events,society);
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem );

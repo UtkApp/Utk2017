@@ -50,7 +50,7 @@ public class MyArrayAdapterClubsList extends ArrayAdapter<String> {
         } else if (s.equals("Rajbhasa Samiti")) {
             imageView.setImageResource(R.drawable.rajbhasha);
         } else if (s.equals("Yoga Club")) {
-            imageView.setImageResource(R.drawable.yoga);
+            imageView.setImageResource(R.drawable.ic_quest);
         } else if (s.equals("Others")) {
             imageView.setImageResource(R.drawable.miscelle);
         }
